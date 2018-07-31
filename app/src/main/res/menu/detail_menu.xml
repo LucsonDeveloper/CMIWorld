@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_chat"
+        android:icon="@drawable/comment"
+        android:orderInCategory="100"
+        android:title="Chat"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_message"
+        android:icon="@drawable/email"
+        android:orderInCategory="100"
+        android:title="Message"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/share"
+        android:orderInCategory="100"
+        android:title="Share"
+        app:showAsAction="ifRoom" />
+</menu>

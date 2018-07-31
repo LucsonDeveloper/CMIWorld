@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="5dp"
+        android:visibility="gone">
+
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/layout_rounded_chat_header"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="date"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/header"
+        android:orientation="vertical">
+
+        <!--<LinearLayout-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal"-->
+        <!--android:gravity="bottom">-->
+
+        <!--<quranologyanologyfinal.other.CircleImageView-->
+        <!--android:layout_width="40dp"-->
+        <!--android:layout_height="40dp"-->
+        <!--android:src="@mipmap/ic_launcher"-->
+        <!--android:id="@+id/avatar"-->
+        <!--app:civ_border_color="#000000"-->
+        <!--app:civ_border_width="0.5dp"-->
+        <!--android:layout_gravity="center_vertical" />-->
+
+        <LinearLayout
+            android:id="@+id/contentWithBackground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@drawable/chat_bg"
+            android:orientation="vertical"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp">
+
+            <TextView
+                android:id="@+id/txtUser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#212121"
+                android:textSize="@dimen/_10" />
+
+            <LinearLayout
+                android:id="@+id/message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxWidth="240dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/image"
+                android:layout_width="225dp"
+                android:layout_height="200dp"
+                android:layout_margin="5dp"
+                android:background="@drawable/layout_rounded_chat_image"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivImageChat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/ivImageDownload"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/download_icon"
+                    android:visibility="gone" />
+
+                <com.lucsoninfotech.cmi.cmiworld.other.CustomGifView
+                    android:id="@+id/gvCancel"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/ivImageUpload"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/upload_icon"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvImageSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ivImageDownload"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="1.9 MB"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#ffffff"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvImageTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="5dp"
+                    android:text="12:40 PM"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/_10" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/video"
+                android:layout_width="225dp"
+                android:layout_height="200dp"
+                android:layout_margin="5dp">
+
+                <ImageView
+                    android:id="@+id/ivVideoChat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:paddingBottom="13dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/video_icon_chat" />
+
+                <TextView
+                    android:id="@+id/tvVideoTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:text="12:40 PM"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#ffffff"
+                    android:textSize="10dp" />
+
+                <ImageView
+                    android:id="@+id/imageView15"
+                    android:layout_width="20dp"
+                    android:layout_height="12dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:src="@drawable/video_icon_chat" />
+
+                <TextView
+                    android:id="@+id/tvVideoDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toEndOf="@+id/imageView15"
+                    android:layout_toRightOf="@+id/imageView15"
+                    android:text="2:40"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#ffffff"
+                    android:textSize="10dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/ivVideoDownload"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/download_icon"
+                    android:visibility="gone" />
+
+                <com.lucsoninfotech.cmi.cmiworld.other.CustomGifView
+                    android:id="@+id/gvCancelVideo"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/ivVideoUpload"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/upload_icon"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvVideoSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/ivVideoDownload"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="3.9 MB"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textColor="#ffffff"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/audio"
+                android:layout_width="100dp"
+                android:layout_height="70dp"
+                android:layout_gravity="right"
+                android:orientation="vertical">
+
+
+                <ProgressBar
+                    android:id="@+id/audioProgressBar"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="150dp"
+                    android:layout_height="10dp"
+                    android:layout_alignEnd="@+id/tvAudioTime"
+                    android:layout_alignRight="@+id/tvAudioTime"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center_horizontal"
+                    android:indeterminate="false"
+                    android:max="100"
+                    android:progress="100"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/ivAudioDownload"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/download_icon"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/ivAudioUpload"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/upload_icon"
+                    android:visibility="gone" />
+
+                <com.lucsoninfotech.cmi.cmiworld.other.CustomGifViewAudio
+                    android:id="@+id/gvCancelAudio"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/ivAudioPlay"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/play"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/ivAudioPause"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/stop"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvAudioSize"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/audioProgressBar"
+                    android:layout_alignStart="@+id/audioProgressBar"
+                    android:layout_alignTop="@+id/tvAudioTime"
+                    android:text="3.9 MB"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/imageView18"
+                    android:layout_width="30dp"
+                    android:layout_height="50dp"
+                    android:layout_above="@+id/tvAudioDuration"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/voice_icon_chat" />
+
+                <TextView
+                    android:id="@+id/tvAudioDuration"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:text="3:21"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvAudioTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/imageView18"
+                    android:text="12:38 PM"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/txtInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:textColor="#ffffff"
+                android:textSize="@dimen/_10" />
+
+        </LinearLayout>
+
+        <!--</LinearLayout>-->
+
+    </LinearLayout>
+
+</RelativeLayout>

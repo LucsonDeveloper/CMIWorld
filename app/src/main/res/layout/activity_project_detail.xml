@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_text"
+    tools:context="com.lucsoninfotech.cmi.cmiworld.Activity.ProjectDetailActivity">
+
+    <!-- <include
+         android:id="@+id/toolbar_project_detail"
+         layout="@layout/toolbar_project_detail" />
+
+ -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:nestedScrollingEnabled="true"
+        android:scrollbars="vertical"
+        tools:ignore="UnusedAttribute">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_5">
+
+
+            <ImageView
+                android:id="@+id/featured_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/back" />
+
+            <ToggleButton
+                android:id="@+id/toggle_like"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/btn_toggle_bg"
+                android:checked="false"
+                android:textOff=""
+                android:textOn="" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/featured_image"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/tabSelectedIconColor"
+                android:orientation="horizontal" />
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayout2"
+                android:layout_margin="@dimen/_10"
+                card_view:cardCornerRadius="@dimen/_5"
+                card_view:contentPadding="@dimen/_10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/project_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/title"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/_70_funded"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="@color/black"
+                        android:textStyle="bold" />
+
+                    <ProgressBar
+                        android:id="@+id/progress_donation"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:max="100"
+                        android:progress="50"
+                        android:progressBackgroundTint="@color/colorPrimaryDark"
+                        android:progressTint="@color/colorPrimaryDark"
+                        tools:targetApi="lollipop" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <!--   <TextView
+                   android:id="@+id/project_title"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_below="@+id/linearLayout2"
+                   android:layout_marginLeft="30dp"
+                   android:layout_marginTop="10dp"
+                   android:text="Title"
+                   android:textAppearance="?android:attr/textAppearanceMedium"
+                   android:textColor="@color/black" />
+
+               <ProgressBar
+                   android:id="@+id/progress_donation"
+                   style="?android:attr/progressBarStyleHorizontal"
+                   android:layout_width="match_parent"
+                   android:layout_height="15dp"
+                   android:layout_below="@+id/project_title"
+                   android:layout_marginLeft="30dp"
+                   android:layout_marginRight="30dp"
+                   android:layout_marginTop="10dp"
+                   android:indeterminate="false"
+                   android:max="100"
+                   android:progress="50" />
+
+               <TextView
+                   android:id="@+id/textView3"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_alignLeft="@+id/progress_donation"
+                   android:layout_alignStart="@+id/progress_donation"
+                   android:layout_below="@+id/progress_donation"
+                   android:layout_marginTop="10dp"
+                   android:text="50% Funded"
+                   android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="@color/black" />
+
+   -->
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/card_view"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/tabSelectedIconColor"
+                android:orientation="horizontal" />
+
+
+            <TextView
+                android:id="@+id/tc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayout3"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/story"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/project_story"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tc"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textColor="@color/black" />
+
+
+            <HorizontalScrollView
+                android:id="@+id/horizontal_Scroll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/project_story"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:background="#ffffff"
+                android:scrollIndicators="none">
+
+                <LinearLayout
+                    android:id="@+id/linear"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#cccccc"
+                    android:orientation="horizontal" />
+
+
+            </HorizontalScrollView>
+
+
+            <HorizontalScrollView
+                android:id="@+id/horizontal_Scroll_video"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/horizontal_Scroll"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="20dp"
+                android:background="#ffffff"
+                android:scrollIndicators="none">
+
+                <LinearLayout
+                    android:id="@+id/linear2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="horizontal" />
+
+
+            </HorizontalScrollView>
+
+            <RelativeLayout
+                android:id="@+id/relative_propic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/horizontal_Scroll_video"
+                android:layout_marginTop="20dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_toLeftOf="@+id/profile_picture"
+                    android:background="@color/tabSelectedIconColor" />
+
+                <com.lucsoninfotech.cmi.cmiworld.other.CircleImageView
+                    android:id="@+id/profile_picture"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@mipmap/ic_launcher"
+                    app:civ_border_color="@color/tabSelectedIconColor"
+                    app:civ_border_width="1dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="35dp"
+                    android:layout_toRightOf="@+id/profile_picture"
+                    android:background="@color/tabSelectedIconColor" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/sem_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/relative_propic"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text=""
+                android:textColor="@color/black" />
+
+            <LinearLayout
+                android:id="@+id/linear_line"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@id/sem_name"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="0dp"
+                android:background="@color/tabSelectedIconColor"
+                android:orientation="horizontal" />
+
+            <TextView
+                android:id="@+id/txt_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linear_line"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/updates"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/black" />
+
+
+            <FrameLayout
+                android:id="@+id/frame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_update">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rv_updates"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                </android.support.v7.widget.RecyclerView>
+
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/see_update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frame"
+                android:layout_marginBottom="@dimen/_50"
+                android:layout_marginLeft="@dimen/_10"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorAccent"
+                android:padding="@dimen/_10"
+                android:text="@string/see_updates"
+                android:textColor="@color/white" />
+
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/donate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        android:scaleType="center"
+        android:src="@drawable/donate_icon_new"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="normal" />
+
+</RelativeLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_text"
+    tools:context="com.lucsoninfotech.cmi.cmiworld.Activity.QueAnsActivity">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+    <Button
+        android:id="@+id/btn_next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/colorAccent"
+        android:padding="@dimen/_5"
+        android:text="@string/next"
+        android:textColor="#ffffff"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btn_previous"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@color/colorAccent"
+        android:padding="@dimen/_5"
+        android:text="@string/previous"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@color/colorAccent"
+        android:padding="@dimen/_5"
+        android:text="@string/submit"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:visibility="invisible" />
+
+</RelativeLayout>

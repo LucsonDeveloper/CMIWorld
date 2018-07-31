@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_text"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="@dimen/_5">
+
+            <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/finalstep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                card_view:cardCornerRadius="@dimen/_5"
+                card_view:contentPadding="@dimen/_10">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/enterprise_detail"
+                        android:textColor="@color/black" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/_20"
+                            android:layout_marginTop="@dimen/_10"
+                            android:text="@string/country"
+                            android:textColor="@color/black" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="10dp"
+                            android:background="@drawable/layout_rounded_main_white">
+
+                            <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                android:id="@+id/spinner_country"
+                                style="@style/SpinnerAsEditText"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_margin="5dp"
+                                android:layout_weight="1"
+                                android:padding="2dp" />
+                            <!--
+                            -->
+                            <ImageView
+                                android:layout_width="25dp"
+                                android:layout_height="25dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/next" />
+
+
+                        </LinearLayout>
+                        <!--
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginBottom="@dimen/_10"
+                                                    android:padding="2dp">
+
+
+                                                    <com.toptoche.searchablespinnerlibrary.SearchableSpinner
+                                                        android:id="@+id/spinner_country"
+                                                        style="@style/SpinnerAsEditText"
+                                                        android:layout_width="0dp"
+                                                        android:layout_height="match_parent"
+                                                        android:layout_margin="5dp"
+                                                        android:layout_weight="1"
+                                                        android:padding="@dimen/_5" />
+
+                                                    <ImageView
+                                                        android:layout_width="25dp"
+                                                        android:layout_height="25dp"
+                                                        android:layout_gravity="center"
+                                                        android:src="@drawable/next" />
+
+                                                </LinearLayout>-->
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/edt_ngo_name"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/enterprise_name"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:padding="@dimen/activity_horizontal_margin"
+                                android:singleLine="true"
+                                android:textStyle="bold" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/edt_registration_id"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/register_id_no"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:padding="@dimen/activity_horizontal_margin"
+                                android:singleLine="true"
+
+                                android:textStyle="bold" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="@string/starting_from"
+                                android:textColor="@color/black" />
+
+                            <LinearLayout
+                                android:id="@+id/linear_date"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@color/primary_text"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/txt_startting_date"
+                                    android:layout_width="0dp"
+                                    android:layout_height="50dp"
+                                    android:layout_weight="1"
+                                    android:gravity="center_vertical"
+
+                                    android:textColor="@color/black" />
+
+                                <ImageView
+                                    android:id="@+id/img_calender"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_marginRight="15dp"
+                                    android:layout_marginTop="12dp"
+                                    android:src="@drawable/calender" />
+                            </LinearLayout>
+                        </LinearLayout>
+
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/edt_ngo_working_area"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_10"
+                                android:hint="@string/working_area"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:padding="@dimen/activity_horizontal_margin"
+                                android:singleLine="true"
+
+                                android:textStyle="bold" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+                        <android.support.design.widget.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <EditText
+                                android:id="@+id/edt_location"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/location"
+                                android:inputType="text"
+                                android:maxLines="1"
+                                android:padding="@dimen/activity_horizontal_margin"
+                                android:singleLine="true"
+
+                                android:textStyle="bold" />
+
+                        </android.support.design.widget.TextInputLayout>
+
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btn_next"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/_50"
+                        android:layout_marginTop="30dp"
+                        android:background="@color/colorAccent"
+                        android:text="@string/next"
+                        android:textColor="@color/white" />
+
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

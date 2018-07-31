@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_text"
+    tools:context="com.lucsoninfotech.cmi.cmiworld.Activity.SettingActivity">
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/change_profile"
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5"
+                android:layout_marginBottom="@dimen/_5"
+                android:background="@color/divider"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_5"
+                    android:layout_marginBottom="@dimen/_5"
+                    android:drawableLeft="@drawable/ic_settings_black_24dp"
+                    android:drawableRight="@drawable/next"
+                    android:padding="@dimen/_5"
+                    android:text="@string/edit_profife"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/activity_horizontal_margin"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/payment_detail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5"
+                android:layout_marginBottom="@dimen/_5"
+                android:background="@color/divider"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_5"
+                    android:layout_marginBottom="@dimen/_5"
+                    android:drawableLeft="@drawable/ic_web_black_24dp"
+                    android:drawableRight="@drawable/next"
+                    android:padding="@dimen/_5"
+                    android:text="@string/payment_details"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/activity_horizontal_margin"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btn_testimonials"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5"
+                android:layout_marginBottom="@dimen/_5"
+                android:background="@color/divider"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/_5"
+                    android:layout_marginBottom="@dimen/_5"
+                    android:layout_weight="1"
+                    android:drawableLeft="@drawable/ic_business_center_black_24dp"
+                    android:padding="@dimen/_5"
+                    android:text="@string/make_donation_public"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/activity_horizontal_margin"
+                    android:textStyle="bold" />
+
+                <Switch
+                    android:id="@+id/switch_public"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:checked="false"
+                    android:shadowColor="@color/colorPrimaryDark" />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/faq"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5"
+                android:layout_marginBottom="@dimen/_5"
+                android:background="@color/divider"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_5"
+                    android:layout_marginBottom="@dimen/_5"
+                    android:drawableLeft="@drawable/ic_error_outline_black_24dp"
+                    android:drawableRight="@drawable/next"
+                    android:padding="@dimen/_5"
+                    android:text="@string/faq"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/activity_horizontal_margin"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/rate_us"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5"
+                android:layout_marginBottom="@dimen/_5"
+                android:background="@color/divider"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_5"
+                    android:layout_marginBottom="@dimen/_5"
+                    android:drawableLeft="@drawable/ic_star_border_black_24dp"
+                    android:drawableRight="@drawable/next"
+                    android:padding="@dimen/_5"
+                    android:text="@string/rate_us"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/activity_horizontal_margin"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+
+                android:id="@+id/logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5"
+                android:layout_marginBottom="@dimen/_5"
+                android:background="@color/divider"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/_5"
+                    android:layout_marginBottom="@dimen/_5"
+                    android:padding="@dimen/_5"
+                    android:text="@string/logout"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="@dimen/activity_horizontal_margin"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>
