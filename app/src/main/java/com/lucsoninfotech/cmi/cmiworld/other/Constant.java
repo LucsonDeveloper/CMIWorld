@@ -69,7 +69,7 @@ public class Constant {
     public static String SearchProjectUrl = Root_Url + "projects-search.php?user_id=";
     public static String FaqUrl = Root_Url + "faq.php";
     public static String Testimonials_URL = Root_Url + "testimonial-add.php?testimonial_id=0&sem_id=";
-    public static String TestimonialsVIew_URL = Root_Url + "testimonial-view.php?type=user";
+    public static String TestimonialsVIew_URL = Root_Url + "testimonial-view.php?type=";
     public static String SEMDonerList = Root_Url + "donor-list-project.php?project_id=";
 
     public static boolean isOnline(Context applicationContext) {
