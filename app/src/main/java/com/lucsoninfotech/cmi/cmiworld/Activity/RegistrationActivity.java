@@ -258,13 +258,9 @@ public class RegistrationActivity extends AppCompatActivity {
                     int error = jObj.getInt("error_code");
                     // Check for error node in json
                     if (error == 0) {
-                        JSONObject data = jObj.getJSONObject("data");
-                        String id = data.getString("id");
-                        Intent i = new Intent(RegistrationActivity.this, OTPActivity.class);
-                        i.putExtra("mail", mail);
+                        Intent i = new Intent(RegistrationActivity.this, LoginActivity.class);
                         startActivity(i);
                         finish();
-                        Toast.makeText(RegistrationActivity.this, "Mail sent to " + mail, Toast.LENGTH_SHORT).show();
                     } else {
                         String errorMsg4 = jObj.getString("error_string");
                         Toast.makeText(getApplicationContext(),

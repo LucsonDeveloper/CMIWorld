@@ -18,6 +18,8 @@ import com.lucsoninfotech.cmi.cmiworld.Fragment.HomeFragment;
 import com.lucsoninfotech.cmi.cmiworld.Fragment.ProfileFragment;
 import com.lucsoninfotech.cmi.cmiworld.Fragment.SearchFragment;
 import com.lucsoninfotech.cmi.cmiworld.R;
+import com.lucsoninfotech.cmi.cmiworld.helper.SQLiteHandler;
+import com.lucsoninfotech.cmi.cmiworld.helper.SessionManager;
 
 public class MainActivity extends AppCompatActivity {
     private final int[] mTabsIcons = {
@@ -26,12 +28,26 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.menubar,
     };
     int tabIconColor;
+    private SessionManager session;
+    private SQLiteHandler db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         // Setup the viewPager
+        db = new SQLiteHandler(getApplicationContext());
+
+        // Session manager
+        session = new SessionManager(getApplicationContext());
+
+        // Check if user is already logged in or not
+        if (!session.isLoggedIn()) {
+            Intent i = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(i);
+            finish();
+        }
+
         Toolbar toolbar = findViewById(R.id.toolbar_home);
         setSupportActionBar(toolbar);
         ImageView donate = toolbar.findViewById(R.id.donate);
