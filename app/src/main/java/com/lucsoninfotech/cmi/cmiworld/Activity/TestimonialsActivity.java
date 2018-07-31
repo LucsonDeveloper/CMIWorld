@@ -145,7 +145,11 @@ public class TestimonialsActivity extends AppCompatActivity {
                         post_data = edt_user_post.getText().toString().trim();
                         HashMap<String, String> abc = new HashMap<>();
 
-
+/*Testimonial Add - Update
+Url:
+http://18.220.189.209/admin/ws/testimonial-add.php?testimonial_id=0&sem_id=3&user_id
+=1&project_id=3&sem_comment=Testimonial
+*/
                         abc.put("time", "just now");
                         abc.put("name", Constant.USER_NAME);
                         abc.put("profile_picture", Constant.USER_IMAGE);

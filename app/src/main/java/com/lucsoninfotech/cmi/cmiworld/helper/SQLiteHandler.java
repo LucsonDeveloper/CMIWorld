@@ -123,8 +123,6 @@ public class SQLiteHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         // Delete All Rows
         db.delete(TABLE_USER, null, null);
-        db.execSQL("delete from " + TABLE_USER);
-        db.close();
 
         Log.d(TAG, "Deleted all user info from sqlite");
     }

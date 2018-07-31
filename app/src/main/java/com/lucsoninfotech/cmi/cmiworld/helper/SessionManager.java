@@ -7,23 +7,31 @@ import android.content.SharedPreferences;
 import com.lucsoninfotech.cmi.cmiworld.Activity.LoginActivity;
 
 
+/**
+ * Created by lucsonmacpc5 on 18/10/16.
+ */
 public class SessionManager {
 
 
-    // Shared preferences file name
-    private static final String PREF_NAME = "CMI_pref";
-    private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
     // LogCat tag
     private static String TAG = SessionManager.class.getSimpleName();
+
     // Shared Preferences
-    private final SharedPreferences pref;
-    private final SharedPreferences.Editor editor;
-    private final Context _context;
-    // Shared pref mode
-    private final int PRIVATE_MODE = 0;
+    SharedPreferences pref;
     SharedPreferences examplePrefs;
+    public static final String PREFS = "pksales_prefs";
     SharedPreferences.Editor editor_wholedata;
-    private SQLiteHandler db;
+    SharedPreferences.Editor editor;
+    Context _context;
+
+
+    // Shared pref mode
+    int PRIVATE_MODE = 0;
+
+    // Shared preferences file name
+    private static final String PREF_NAME = "CMI_pref";
+
+    private static final String KEY_IS_LOGGEDIN = "isLoggedIn";
 
     public SessionManager(Context context) {
         this._context = context;
@@ -47,12 +55,9 @@ public class SessionManager {
     }
 
     public void logoutUser() {
-        db = new SQLiteHandler(_context);
+        // Clearing all data from Shared Preferences
         editor.clear();
         editor.commit();
-        db.deleteUsers();
-        //    LoginManager.getInstance().logOut();
-
         // After logout redirect user to Loing Activity
         Intent i = new Intent(_context, LoginActivity.class);
         // Closing all the Activities

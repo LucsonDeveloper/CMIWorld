@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 
 import com.lucsoninfotech.cmi.cmiworld.R;
+import com.lucsoninfotech.cmi.cmiworld.helper.SQLiteHandler;
 import com.lucsoninfotech.cmi.cmiworld.helper.SessionManager;
 
 public class SettingActivity extends AppCompatActivity {
@@ -19,13 +20,14 @@ public class SettingActivity extends AppCompatActivity {
     private LinearLayout faq;
     private LinearLayout rate_us;
     private SessionManager session;
-
+    private SQLiteHandler db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
         logout = findViewById(R.id.logout);
+        db = new SQLiteHandler(getApplicationContext());
 
         change_profile = findViewById(R.id.change_profile);
         payment_detail = findViewById(R.id.payment_detail);
@@ -41,6 +43,7 @@ public class SettingActivity extends AppCompatActivity {
 
 
                 session.logoutUser();
+                db.deleteUsers();
                 Intent i = new Intent(SettingActivity.this, LoginActivity.class);
                 startActivity(i);
                 finish();
