@@ -80,10 +80,10 @@ public class TestimonialsActivity extends AppCompatActivity {
             linear_postcomment.setVisibility(View.VISIBLE);
             testimonial_url = Constant.TestimonialsVIew_URL
                     + "&sem_id=" + b.getString("sem_id") +
-                    "&user_id=" + b.getString("id") + "&page=1";
+                    "&user_id=" +Constant.USER_ID + "&page=1";
         } else {
             testimonial_url = Constant.TestimonialsVIew_URL
-                    + "&sem_id=" + b.getString("sem_id") + "&user_id=" + b.getString("id") + "&page=1";
+                    + "&sem_id=" + b.getString("sem_id") + "&user_id=" +Constant.USER_ID  + "&page=1";
 
         }
         if (Constant.isOnline(getApplicationContext())) {
@@ -103,11 +103,11 @@ public class TestimonialsActivity extends AppCompatActivity {
                 if (Constant.USER_TYPE.equals("2")) {
                     b = getIntent().getExtras();
                     post_url = Constant.Testimonials_URL + b.getString("sem_id")
-                            + "&user_id=" + b.getString("id") + "&project_id=" + b.getString("project_id");
+                            + "&user_id=" +Constant.USER_ID  + "&project_id=" + b.getString("project_id");
                 } else {
                     b = getIntent().getExtras();
                     post_url = Constant.Testimonials_URL + b.getString("sem_id")
-                            + "&user_id=" + b.getString("id") + "&project_id=" + b.getString("project_id");
+                            + "&user_id=" +Constant.USER_ID  + "&project_id=" + b.getString("project_id");
 
                 }
                 if (Constant.isOnline(getApplicationContext())) {
