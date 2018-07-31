@@ -77,12 +77,11 @@ public class TestimonialsActivity extends AppCompatActivity {
             Bundle b = getIntent().getExtras();
             linear_postcomment.setVisibility(View.VISIBLE);
             testimonial_url = Constant.TestimonialsVIew_URL
-                    + Constant.USER_TYPE + "&sem_id=" + Constant.USER_ID +
-                    "&user_id=" + b.getString("user_id") + "&page=1";
+                    + "&sem_id=" + b.getString("sem_id") +
+                    "&user_id=1" + "&page=1";
         } else {
             testimonial_url = Constant.TestimonialsVIew_URL
-                    + Constant.USER_TYPE + "&sem_id=" +
-                    Constant.USER_ID + "&user_id=" + Constant.USER_ID + "&page=1";
+                    + "&sem_id=" + b.getString("sem_id") + "&user_id=1" + "&page=1";
 
         }
         if (Constant.isOnline(getApplicationContext())) {
@@ -101,7 +100,13 @@ public class TestimonialsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (Constant.USER_TYPE.equals("2")) {
                     b = getIntent().getExtras();
-                    post_url = Constant.Testimonials_URL + Constant.USER_ID + "&user_id=" + b.getString("user_id") + "&project_id=" + b.getString("project_id");
+                    post_url = Constant.Testimonials_URL + b.getString("sem_id")
+                            + "&user_id=" + Constant.USER_ID + "&project_id=" + b.getString("project_id");
+                } else {
+                    b = getIntent().getExtras();
+                    post_url = Constant.Testimonials_URL + b.getString("sem_id")
+                            + "&user_id=" + Constant.USER_ID + "&project_id=" + b.getString("project_id");
+
                 }
                 if (Constant.isOnline(getApplicationContext())) {
                     PostComment();
@@ -126,6 +131,7 @@ public class TestimonialsActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Log.d("responce", response);
+                Log.d("responce", post_url);
                 hideDialog();
 
                 try {
@@ -210,6 +216,7 @@ public class TestimonialsActivity extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
                 Log.d("responce", response);
+                Log.d("responce", testimonial_url);
                 hideDialog();
 
                 try {

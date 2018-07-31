@@ -54,7 +54,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
     private TextView sem_name;
     private String projectdetailurl;
     private String posturl;
-    private String project_id;
+    private String project_id,sem_id;
     private String updateurl;
     private String likeurl;
     private String string_like;
@@ -299,7 +299,9 @@ public class ProjectDetailActivity extends AppCompatActivity {
                         JSONObject data = jObj.getJSONObject("data");
 
                         project_id = data.getString("id");
-                        Constant.RECEIVER_ID = data.getString("sem_id");
+
+                        sem_id = data.getString("sem_id");
+
                         String project_name = data.getString("project_name");
                         String long_description = data.getString("long_description");
                         String featured_image_url = data.getString("featured_image");
@@ -607,6 +609,13 @@ public class ProjectDetailActivity extends AppCompatActivity {
             case R.id.action_chat:
                 CommentAction();
                 return true;
+            case R.id.action_testimonials:
+                Intent intent = new Intent(getApplicationContext(), TestimonialsActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("project_id", project_id);
+                bundle.putString("sem_id",sem_id);
+                intent.putExtras(bundle);
+                startActivity(intent);
             case R.id.action_message:
                 MessageActions();
                 return true;
