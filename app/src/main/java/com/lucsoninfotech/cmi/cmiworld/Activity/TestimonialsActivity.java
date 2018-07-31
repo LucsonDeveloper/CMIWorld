@@ -2,10 +2,12 @@ package com.lucsoninfotech.cmi.cmiworld.Activity;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -78,10 +80,10 @@ public class TestimonialsActivity extends AppCompatActivity {
             linear_postcomment.setVisibility(View.VISIBLE);
             testimonial_url = Constant.TestimonialsVIew_URL
                     + "&sem_id=" + b.getString("sem_id") +
-                    "&user_id=1" + "&page=1";
+                    "&user_id=" + b.getString("id") + "&page=1";
         } else {
             testimonial_url = Constant.TestimonialsVIew_URL
-                    + "&sem_id=" + b.getString("sem_id") + "&user_id=1" + "&page=1";
+                    + "&sem_id=" + b.getString("sem_id") + "&user_id=" + b.getString("id") + "&page=1";
 
         }
         if (Constant.isOnline(getApplicationContext())) {
@@ -101,11 +103,11 @@ public class TestimonialsActivity extends AppCompatActivity {
                 if (Constant.USER_TYPE.equals("2")) {
                     b = getIntent().getExtras();
                     post_url = Constant.Testimonials_URL + b.getString("sem_id")
-                            + "&user_id=" + Constant.USER_ID + "&project_id=" + b.getString("project_id");
+                            + "&user_id=" + b.getString("id") + "&project_id=" + b.getString("project_id");
                 } else {
                     b = getIntent().getExtras();
                     post_url = Constant.Testimonials_URL + b.getString("sem_id")
-                            + "&user_id=" + Constant.USER_ID + "&project_id=" + b.getString("project_id");
+                            + "&user_id=" + b.getString("id") + "&project_id=" + b.getString("project_id");
 
                 }
                 if (Constant.isOnline(getApplicationContext())) {
@@ -293,6 +295,17 @@ http://18.220.189.209/admin/ws/testimonial-add.php?testimonial_id=0&sem_id=3&use
     private void showDialog() {
         if (!pDialog.isShowing())
             pDialog.show();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                NavUtils.navigateUpFromSameTask(this);
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void hideDialog() {

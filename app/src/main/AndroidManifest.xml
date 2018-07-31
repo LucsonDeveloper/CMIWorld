@@ -133,9 +133,11 @@
         <activity
             android:name=".Activity.FilterActivity"
             android:label="Filter" />
-        <activity
-            android:name=".Activity.TestimonialsActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activity.TestimonialsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.ProfileActivity" />
+        </activity>
         <activity android:name=".Activity.ProjectListActivity" />
         <activity android:name=".Activity.DonorListActivity" />
         <activity

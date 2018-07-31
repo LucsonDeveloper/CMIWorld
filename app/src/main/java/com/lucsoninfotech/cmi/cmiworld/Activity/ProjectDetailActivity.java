@@ -54,7 +54,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
     private TextView sem_name;
     private String projectdetailurl;
     private String posturl;
-    private String project_id,sem_id;
+    private String project_id, sem_id;
     private String updateurl;
     private String likeurl;
     private String string_like;
@@ -613,7 +613,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), TestimonialsActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putString("project_id", project_id);
-                bundle.putString("sem_id",sem_id);
+                bundle.putString("sem_id", sem_id);
                 intent.putExtras(bundle);
                 startActivity(intent);
             case R.id.action_message:
