@@ -53,7 +53,7 @@ public class MediaViewActivty extends AppCompatActivity {
 
     }
 
-    @Override
+  /*  @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             // Respond to the action bar's Up/Home button
@@ -62,5 +62,5 @@ public class MediaViewActivty extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 }

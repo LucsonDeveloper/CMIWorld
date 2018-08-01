@@ -163,6 +163,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:drawableLeft="@drawable/ic_bookmark_border_black_24dp"
                         android:gravity="center_vertical|center_horizontal"
                         android:text="Community"
                         android:textColor="@color/black" />
@@ -172,6 +173,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:drawableLeft="@drawable/ic_location_on_black_24dp"
                         android:gravity="center_vertical|center_horizontal"
                         android:text="Location"
                         android:textColor="@color/black" />

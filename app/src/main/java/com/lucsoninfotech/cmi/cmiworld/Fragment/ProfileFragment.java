@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.lucsoninfotech.cmi.cmiworld.Activity.ChatRoomActivity;
+import com.lucsoninfotech.cmi.cmiworld.Activity.ProfileActivity;
 import com.lucsoninfotech.cmi.cmiworld.Activity.ProjectListActivity;
 import com.lucsoninfotech.cmi.cmiworld.Activity.SettingActivity;
 import com.lucsoninfotech.cmi.cmiworld.Activity.TestimonialsActivity;
@@ -44,7 +46,7 @@ public class ProfileFragment extends Fragment {
     private ProgressDialog pDialog;
     private ImageView profile_picture;
     private TextView username;
-
+CardView finalstep;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,7 +58,7 @@ public class ProfileFragment extends Fragment {
         LinearLayout btn_status = view.findViewById(R.id.btn_status);
         profile_picture = view.findViewById(R.id.profile_picture);
         username = view.findViewById(R.id.username);
-
+        finalstep=view.findViewById(R.id.finalstep);
         SQLiteHandler db = new SQLiteHandler(getActivity());
         HashMap<String, String> user_detail = db.getUserDetails();
         Log.e("UserID", "" + user_detail.get("id"));
@@ -74,7 +76,17 @@ public class ProfileFragment extends Fragment {
             Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_SHORT).show();
         }
 
-
+        finalstep.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Constant.isOnline(getActivity())) {
+                    Intent i = new Intent(getActivity(), ProfileActivity.class);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         btn_testimonials.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

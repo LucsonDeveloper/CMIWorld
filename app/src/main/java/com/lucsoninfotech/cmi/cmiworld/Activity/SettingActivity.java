@@ -44,8 +44,6 @@ public class SettingActivity extends AppCompatActivity {
 
                 session.logoutUser();
                 db.deleteUsers();
-                Intent i = new Intent(SettingActivity.this, LoginActivity.class);
-                startActivity(i);
                 finish();
             }
         });

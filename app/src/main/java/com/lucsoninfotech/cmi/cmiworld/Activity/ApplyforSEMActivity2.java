@@ -166,6 +166,8 @@ public class ApplyforSEMActivity2 extends AppCompatActivity {
             Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(getApplicationContext(), ApplyforSEMActivity.class);
+            startActivity(intent);
         }
     }
 
@@ -224,7 +226,7 @@ public class ApplyforSEMActivity2 extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             // setting progress bar to zero
-
+            showDialog();
 
             circle_progress.setProgress(0);
 
@@ -347,6 +349,7 @@ public class ApplyforSEMActivity2 extends AppCompatActivity {
                             + statusCode;
                     runOnUiThread(new Runnable() {
                         public void run() {
+                            hideDialog();
                             circle_progress.setVisibility(View.GONE);
                             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                             Toast.makeText(ApplyforSEMActivity2.this, "Please try again", Toast.LENGTH_LONG).show();
@@ -379,6 +382,7 @@ public class ApplyforSEMActivity2 extends AppCompatActivity {
 
                 // Check for error node in json
                 if (error == 0) {
+                    hideDialog();
                     Toast.makeText(ApplyforSEMActivity2.this, "Project Upload Successfully", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(ApplyforSEMActivity2.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);

@@ -1,16 +1,21 @@
 package com.lucsoninfotech.cmi.cmiworld.Activity;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
@@ -51,9 +56,9 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class ProfileActivity extends AppCompatActivity {
-
-
+    static final Integer READ_EXST = 1;
     private final int PICK_IMAGE_REQUEST = 1;
+    private ProgressDialog pDialog;
     private TextView txt_email;
     private EditText edt_name;
     private EditText edt_mobile;
@@ -70,6 +75,8 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        askForPermission(Manifest.permission.READ_EXTERNAL_STORAGE, READ_EXST);
+
         progressBarHolder = findViewById(R.id.progressBarHolder);
         progressbar = findViewById(R.id.progressbar);
         TextView txt_changepassword = findViewById(R.id.txt_changepassword);
@@ -78,7 +85,7 @@ public class ProfileActivity extends AppCompatActivity {
         edt_mobile = findViewById(R.id.edt_mobile);
         user_dp = findViewById(R.id.user_dp);
         Button btn_save = findViewById(R.id.btn_save);
-        ProgressDialog pDialog = new ProgressDialog(this);
+        pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
 
 
@@ -127,6 +134,31 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+    private void askForPermission(String permission, Integer requestCode) {
+        if (ContextCompat.checkSelfPermission(ProfileActivity.this, permission) != PackageManager.PERMISSION_GRANTED) {
+
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(ProfileActivity.this, permission)) {
+                //This is called if user has denied the permission before
+                //In this case I am just asking the permission again
+                ActivityCompat.requestPermissions(ProfileActivity.this, new String[]{permission}, requestCode);
+            } else {
+                ActivityCompat.requestPermissions(ProfileActivity.this, new String[]{permission}, requestCode);
+            }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (ActivityCompat.checkSelfPermission(this, permissions[0]) == PackageManager.PERMISSION_GRANTED) {
+            Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Permission denied", Toast.LENGTH_SHORT).show();
+            recreate();
+        }
+    }
+
     @Override
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -164,6 +196,8 @@ public class ProfileActivity extends AppCompatActivity {
                 hideDialog();
 
                 try {
+
+                    Log.d("responce", response);
                     JSONObject jObj = new JSONObject(response);
                     int error = jObj.getInt("error_code");
 
@@ -319,8 +353,6 @@ public class ProfileActivity extends AppCompatActivity {
                 } else {
                     runOnUiThread(new Runnable() {
                         public void run() {
-
-                            Toast.makeText(ProfileActivity.this, "Please Select Image", Toast.LENGTH_LONG).show();
                         }
                     });
                 }
@@ -373,15 +405,27 @@ public class ProfileActivity extends AppCompatActivity {
 
         }
 
+        private void showDialog() {
+            if (!pDialog.isShowing())
+                pDialog.show();
+        }
+
+        private void hideDialog() {
+            if (pDialog.isShowing())
+                pDialog.dismiss();
+        }
+
         @Override
         protected void onPostExecute(String result) {
 
             super.onPostExecute(result);
             hideDialog();
-
+            Log.d("responce", result);
             try {
                 JSONObject jObj = new JSONObject(result);
                 int error = jObj.getInt("error_code");
+                Log.d("responce", result);
+
                 // Check for error node in json
                 if (error == 0) {
 //                    JSONObject data = jObj.getJSONObject("data");

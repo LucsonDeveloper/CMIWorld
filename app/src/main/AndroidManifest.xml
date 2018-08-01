@@ -105,11 +105,8 @@
         </activity>
         <activity
             android:name=".Activity.MediaViewActivty"
-            android:label="Full Screen View">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Activity.ProjectDetailActivity" />
-        </activity>
+            android:label="Full Screen View" />
+
         <activity
             android:name=".Activity.ApplyforSEMActivity"
             android:label="Application From"
