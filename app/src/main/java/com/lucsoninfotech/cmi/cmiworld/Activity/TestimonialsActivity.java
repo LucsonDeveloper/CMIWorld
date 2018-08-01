@@ -54,6 +54,7 @@ public class TestimonialsActivity extends AppCompatActivity {
     HashMap<String, String> user_detail = new HashMap<>();
     List<HashMap<String, String>> testimonials_list;
     Bundle b;
+    String sem_id, project_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,21 +73,21 @@ public class TestimonialsActivity extends AppCompatActivity {
         testimonials_list = new ArrayList<>();
         SQLiteHandler db = new SQLiteHandler(this);
         user_detail = db.getUserDetails();
-        Log.e("UserID" , ""+user_detail.get("id"));
+        Log.e("UserID", "" + user_detail.get("id"));
         Constant.USER_ID = user_detail.get("id");
         Constant.USER_TYPE = user_detail.get("user_type");
         System.out.println("user type from database::::::" + Constant.USER_TYPE);
 
+        b = getIntent().getExtras();
+        project_id = b.getString("project_id");
+        sem_id = b.getString("sem_id");
         if (Constant.USER_TYPE.equals("2")) {
             Bundle b = getIntent().getExtras();
             linear_postcomment.setVisibility(View.VISIBLE);
             //http://18.220.189.209/admin/ws/testimonial-view.php?type=user&sem_id=3&user_id=100&page=1
-            testimonial_url = Constant.TestimonialsVIew_URL  + Constant.USER_TYPE +
-                    "&sem_id=" + b.getString("sem_id")+
-                    "&user_id=" +Constant.USER_ID + "&page=1";
+            testimonial_url = Constant.TestimonialsVIew_URL + Constant.USER_TYPE +"&sem_id=" + sem_id +"&user_id=" + Constant.USER_ID + "&page=1";
         } else {
-            testimonial_url = Constant.TestimonialsVIew_URL  + Constant.USER_TYPE +  "&sem_id=" + b.getString("sem_id")+
-                    "&user_id=" +Constant.USER_ID + "&page=1";
+            testimonial_url = Constant.TestimonialsVIew_URL + Constant.USER_TYPE + "&sem_id=" + sem_id +"&user_id=" + Constant.USER_ID + "&page=1";
 
         }
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -106,10 +107,10 @@ public class TestimonialsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (Constant.USER_TYPE.equals("2")) {
-                    b = getIntent().getExtras();
+
                     //http://http//18.220.189.209/admin/ws/testimonial-add.php?testimonial_id=0&sem_id=3&user_id=100&project_id=3&sem_comment=Testimonial%20byyy%20ssss
-                    post_url = Constant.Testimonials_URL +  b.getString("sem_id")+
-                            "&user_id=" +Constant.USER_ID+ "&project_id=" + b.getString("project_id");
+                    post_url = Constant.Testimonials_URL + sem_id +
+                            "&user_id=" + Constant.USER_ID + "&project_id=" + project_id;
                 }
                 ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();

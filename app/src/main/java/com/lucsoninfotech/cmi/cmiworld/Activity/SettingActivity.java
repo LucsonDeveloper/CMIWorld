@@ -44,6 +44,7 @@ public class SettingActivity extends AppCompatActivity {
 
                 session.logoutUser();
                 db.deleteUsers();
+                finishAffinity();
                 finish();
             }
         });

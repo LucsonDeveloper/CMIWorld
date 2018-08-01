@@ -303,7 +303,7 @@ public class ProjectDetailActivity extends AppCompatActivity {
                         sem_id = data.getString("sem_id");
 
                         String project_name = data.getString("project_name");
-                        String long_description = data.getString("long_description");
+                        String long_description = data.getString("short_description");
                         String featured_image_url = data.getString("featured_image");
                         String estimated_donation = data.getString("estimated_donation");
                         String profile_picture_url = data.getString("profile_picture");
