@@ -34,10 +34,12 @@
         android:noHistory="true"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <!--      <meta-data
+
+        <!--
+                  <meta-data
                   android:name="com.facebook.sdk.ApplicationId"
                   android:value="@string/facebook_app_id" />
-      -->
+        -->
         <activity
             android:name=".Activity.MainActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -107,12 +109,10 @@
         <activity
             android:name=".Activity.MediaViewActivty"
             android:label="Full Screen View" />
-
         <activity
             android:name=".Activity.ApplyforSEMActivity"
             android:label="Application From"
             android:windowSoftInputMode="stateHidden" />
-
         <activity
             android:name=".Activity.PaymentDetailActivity"
             android:label="Payments Details">
@@ -141,7 +141,6 @@
         <activity
             android:name=".Activity.QueAnsActivity"
             android:label="Survey" />
-
         <activity android:name=".Activity.VideoPickerActivity" />
         <activity
             android:name="com.cooltechworks.creditcarddesign.CardEditActivity"
@@ -175,6 +174,13 @@
         <activity
             android:name=".Activity.FAQActivity"
             android:label="@string/title_activity_faq">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Activity.ProfileActivity" />
+        </activity>
+        <activity
+            android:name=".Activity.Rateus"
+            android:label="Rate Us">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.ProfileActivity" />

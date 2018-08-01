@@ -7,10 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.lucsoninfotech.cmi.cmiworld.R;
 import com.lucsoninfotech.cmi.cmiworld.helper.SQLiteHandler;
 import com.lucsoninfotech.cmi.cmiworld.helper.SessionManager;
+import com.lucsoninfotech.cmi.cmiworld.other.Constant;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -48,7 +50,17 @@ public class SettingActivity extends AppCompatActivity {
                 finish();
             }
         });
-
+        rate_us.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Constant.isOnline(getApplicationContext())) {
+                    Intent i = new Intent(SettingActivity.this, Rateus.class);
+                    startActivity(i);
+                } else {
+                    Toast.makeText(SettingActivity.this, "Please Check Your Network Connection", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
         change_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
