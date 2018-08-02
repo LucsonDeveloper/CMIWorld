@@ -28,13 +28,11 @@ public class OTPActivity extends AppCompatActivity {
 
 
     private EditText edt_otp;
-    private Button btn_done;
     private String otp;
     private String verifyurl;
     private String id;
     private String otpurl;
     private ProgressDialog pDialog;
-    private TextView resend_otp;
 
 
     @Override
@@ -43,8 +41,8 @@ public class OTPActivity extends AppCompatActivity {
         setContentView(R.layout.activity_otp);
 
         edt_otp = findViewById(R.id.edt_mail);
-        btn_done = findViewById(R.id.btn_done);
-        resend_otp = findViewById(R.id.resend_otp);
+        Button btn_done = findViewById(R.id.btn_done);
+        TextView resend_otp = findViewById(R.id.resend_otp);
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);

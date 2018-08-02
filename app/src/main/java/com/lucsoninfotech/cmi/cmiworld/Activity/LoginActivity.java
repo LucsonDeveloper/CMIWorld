@@ -145,7 +145,6 @@ public class LoginActivity extends AppCompatActivity {
                                 String smobile = c.getString("mobile");
                                 String spassword = c.getString("password");
                                 String user_role = c.getString("user_role");
-                                String user_level = c.getString("user_level");
 
                                 System.out.println("user_type :::" + user_role);
                                 Constant.USER_TYPE = user_role;

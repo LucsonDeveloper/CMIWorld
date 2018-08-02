@@ -13,7 +13,6 @@ import android.webkit.WebViewClient;
 import com.lucsoninfotech.cmi.cmiworld.R;
 
 public class Rateus extends AppCompatActivity {
-    private String postUrl = "https://play.google.com/store/apps/details?id=com.lucsoninfotech.cmi.cmiworld";
 
     @SuppressLint("SetJavaScriptEnabled")
     @Override
@@ -22,7 +21,7 @@ public class Rateus extends AppCompatActivity {
         setContentView(R.layout.activity_rateus);
 
 
-        WebView myWebView = (WebView) findViewById(R.id.webview);
+        WebView myWebView = findViewById(R.id.webview);
 
         myWebView.setWebViewClient(new MyWebViewClient());
 
@@ -31,6 +30,7 @@ public class Rateus extends AppCompatActivity {
         webSettings.setJavaScriptEnabled(true);
         webSettings.setLoadsImagesAutomatically(true);
         myWebView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
+        String postUrl = "https://play.google.com/store/apps/details?id=com.lucsoninfotech.cmi.cmiworld";
         myWebView.loadUrl(postUrl);
     }
 

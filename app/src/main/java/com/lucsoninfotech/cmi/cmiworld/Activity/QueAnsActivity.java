@@ -31,14 +31,16 @@ import java.util.Map;
 
 public class QueAnsActivity extends AppCompatActivity implements QueAnsFragment.OnGetFromUserClickListener {
 
-    public ProgressDialog pDialog;
-    ViewPager viewpager;
-    QueAnsAdapter queAnsAdapter;
-    ArrayList<QueAnsFragment> fragment;
-    Button btn_next, btn_previous, btn_submit;
-    QueAnsFragment frag1;
-    ArrayList answer;
-    String ans[];
+    private ProgressDialog pDialog;
+    private ViewPager viewpager;
+    private QueAnsAdapter queAnsAdapter;
+    private ArrayList<QueAnsFragment> fragment;
+    private Button btn_next;
+    private Button btn_previous;
+    private Button btn_submit;
+    private QueAnsFragment frag1;
+    private ArrayList answer;
+    private String[] ans;
     HashMap<String, String> user_detail = new HashMap<>();
 
     @Override
@@ -46,10 +48,10 @@ public class QueAnsActivity extends AppCompatActivity implements QueAnsFragment.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_que_ans);
 
-        viewpager = (ViewPager) findViewById(R.id.view_question);
-        btn_next = (Button) findViewById(R.id.btn_next);
-        btn_previous = (Button) findViewById(R.id.btn_previous);
-        btn_submit = (Button) findViewById(R.id.btn_submit);
+        viewpager = findViewById(R.id.view_question);
+        btn_next = findViewById(R.id.btn_next);
+        btn_previous = findViewById(R.id.btn_previous);
+        btn_submit = findViewById(R.id.btn_submit);
 
         //user_detail = new SQLiteHandler(QueAnsActivity.this).getUserDetails();
         //Constant.USER_ID = user_detail.get("id");
@@ -133,13 +135,13 @@ public class QueAnsActivity extends AppCompatActivity implements QueAnsFragment.
         return message;
     }
 
-    public void setQueAns() {
+    private void setQueAns() {
         // Tag used to cancel the request
         final String tag_string_req = "req_login";
         pDialog.setMessage("Please Wait");
         pDialog.setTitle("Processing");
         showDialog();
-        Map<String, String> params = new HashMap<String, String>();
+        Map<String, String> params = new HashMap<>();
 
         params.put("user_id", Constant.USER_ID);
         params.put("a1", String.valueOf(answer.get(0)));
@@ -187,7 +189,7 @@ public class QueAnsActivity extends AppCompatActivity implements QueAnsFragment.
             @Override
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put("user_id", Constant.USER_ID);
                 params.put("a1", String.valueOf(answer.get(0)));
                 params.put("a2", String.valueOf(answer.get(1)));
@@ -214,9 +216,9 @@ public class QueAnsActivity extends AppCompatActivity implements QueAnsFragment.
 
     private class QueAnsAdapter extends FragmentStatePagerAdapter {
 
-        ArrayList<QueAnsFragment> fragment;
+        final ArrayList<QueAnsFragment> fragment;
 
-        public QueAnsAdapter(FragmentManager fm, ArrayList<QueAnsFragment> fragment) {
+        QueAnsAdapter(FragmentManager fm, ArrayList<QueAnsFragment> fragment) {
             super(fm);
             this.fragment = fragment;
         }

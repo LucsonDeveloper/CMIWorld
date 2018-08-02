@@ -1,6 +1,7 @@
 package com.lucsoninfotech.cmi.cmiworld.Activity;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,6 +11,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -47,18 +49,28 @@ import java.io.IOException;
 
 public class ApplyforSEMActivity2 extends AppCompatActivity {
 
-    static final Integer READ_EXST = 1;
-    LinearLayout linear_images, linear_feature;
-    EditText edt_project_name, edt_description, edt_tag, edt_estimated_donation;
-    Button btn_done;
-    TextView txt_select_feature_image, txt_select_image, txt_select_video, txt_per;
-    Bitmap bitmap;
-    String filePath, addprojecturl, resp, category_id;
-    Spinner spn_category;
-    Bundle b;
-    CircleProgress circle_progress;
-    long totalSize = 0;
-    private int PICK_IMAGE_REQUEST = 1;
+    private static final Integer READ_EXST = 1;
+    private LinearLayout linear_images;
+    private LinearLayout linear_feature;
+    private EditText edt_project_name;
+    private EditText edt_description;
+    private EditText edt_tag;
+    private EditText edt_estimated_donation;
+    private Button btn_done;
+    private TextView txt_select_feature_image;
+    private TextView txt_select_image;
+    private TextView txt_select_video;
+    TextView txt_per;
+    private Bitmap bitmap;
+    private String filePath;
+    private String addprojecturl;
+    private String resp;
+    private String category_id;
+    private Spinner spn_category;
+    private Bundle b;
+    private CircleProgress circle_progress;
+    private long totalSize = 0;
+    private final int PICK_IMAGE_REQUEST = 1;
     private ProgressDialog pDialog;
 
     @Override
@@ -84,7 +96,7 @@ public class ApplyforSEMActivity2 extends AppCompatActivity {
         pDialog.setCancelable(false);
 
 
-        askForPermission(Manifest.permission.READ_EXTERNAL_STORAGE, READ_EXST);
+        askForPermission(READ_EXST);
 
 
         b = getIntent().getExtras();
@@ -145,22 +157,22 @@ public class ApplyforSEMActivity2 extends AppCompatActivity {
 
     }
 
-    private void askForPermission(String permission, Integer requestCode) {
-        if (ContextCompat.checkSelfPermission(ApplyforSEMActivity2.this, permission) != PackageManager.PERMISSION_GRANTED) {
+    private void askForPermission(Integer requestCode) {
+        if (ContextCompat.checkSelfPermission(ApplyforSEMActivity2.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
             // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(ApplyforSEMActivity2.this, permission)) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(ApplyforSEMActivity2.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
                 //This is called if user has denied the permission before
                 //In this case I am just asking the permission again
-                ActivityCompat.requestPermissions(ApplyforSEMActivity2.this, new String[]{permission}, requestCode);
+                ActivityCompat.requestPermissions(ApplyforSEMActivity2.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, requestCode);
             } else {
-                ActivityCompat.requestPermissions(ApplyforSEMActivity2.this, new String[]{permission}, requestCode);
+                ActivityCompat.requestPermissions(ApplyforSEMActivity2.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, requestCode);
             }
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (ActivityCompat.checkSelfPermission(this, permissions[0]) == PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();
@@ -196,7 +208,7 @@ public class ApplyforSEMActivity2 extends AppCompatActivity {
             Cursor cursor = getContentResolver().query(selectedImage,
                     filePathColumn, null, null, null);
             // Move to first row
-            int columnIndex = 0;
+            int columnIndex;
             if (cursor != null) {
                 cursor.moveToFirst();
                 columnIndex = cursor.getColumnIndex(filePathColumn[0]);
@@ -222,6 +234,7 @@ public class ApplyforSEMActivity2 extends AppCompatActivity {
             pDialog.dismiss();
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class UploadFileToServer extends AsyncTask<Void, Integer, String> {
         @Override
         protected void onPreExecute() {
@@ -253,7 +266,7 @@ public class ApplyforSEMActivity2 extends AppCompatActivity {
 
         @SuppressWarnings("deprecation")
         private String uploadFile() {
-            String responseString = null;
+            String responseString;
 
             HttpClient httpclient = new DefaultHttpClient();
             HttpPost httppost = new HttpPost(addprojecturl);

@@ -28,7 +28,6 @@ public class MainActivity extends AppCompatActivity {
             R.drawable.menubar,
     };
     int tabIconColor;
-    private SessionManager session;
     private SQLiteHandler db;
 
     @Override
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         db = new SQLiteHandler(getApplicationContext());
 
         // Session manager
-        session = new SessionManager(getApplicationContext());
+        SessionManager session = new SessionManager(getApplicationContext());
 
         // Check if user is already logged in or not
         if (!session.isLoggedIn()) {

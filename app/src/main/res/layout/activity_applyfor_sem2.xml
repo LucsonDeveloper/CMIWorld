@@ -97,7 +97,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="10dp"
@@ -142,7 +141,6 @@
                         android:id="@+id/linear_images"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="10dp"
@@ -185,7 +183,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="10dp"
@@ -228,7 +225,6 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
                         android:layout_marginLeft="20dp"
                         android:layout_marginRight="20dp"
                         android:layout_marginTop="10dp"
@@ -307,7 +303,6 @@
         android:id="@+id/circle_progress"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_centerInParent="true"
         android:layout_marginLeft="50dp"
         android:visibility="gone"
         app:circle_finished_color="@color/tabSelectedIconColor"

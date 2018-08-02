@@ -16,8 +16,6 @@ public class QueAnsFragment extends Fragment {
 
     Activity mActivity;
     private int pos;
-    private TextView txt_no;
-    private TextView txt_que;
     private EditText edt_ans;
 
     public QueAnsFragment() {
@@ -30,8 +28,8 @@ public class QueAnsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_que_ans, container, false);
-        txt_no = view.findViewById(R.id.txt_no);
-        txt_que = view.findViewById(R.id.txt_question);
+        TextView txt_no = view.findViewById(R.id.txt_no);
+        TextView txt_que = view.findViewById(R.id.txt_question);
         edt_ans = view.findViewById(R.id.edt_ans);
 
 

@@ -1,5 +1,6 @@
 package com.lucsoninfotech.cmi.cmiworld.Activity;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -114,7 +115,6 @@ public class ChatActivity extends AppCompatActivity {
     private EditText etMessage;
     private ProgressDialog pDialog;
     private String message;
-    private ImageButton btnSend;
     private ListView lvMessageContainer;
     private ArrayList<ChatMessageModel> chatHistory;
     private ChatMessageAdapter adapter;
@@ -122,21 +122,16 @@ public class ChatActivity extends AppCompatActivity {
     private String time;
     private String date;
     private Calendar calander;
-    private ImageView backButton;
     private LinearLayout layout_detail;
     private String url;
-    private String urlReceive;
     private String receiverName;
     private String timezone_id;
-    private TextView tvChatContactName;
-    private String[] splited_time = new String[2];
     private boolean notify = false;
     private URI uri;
     private String urlEncoded;
     private String urlSafe;
     private String newMessage;
     private int count = 0;
-    private ImageView chatDp;
     private String flag;
 
     @Override
@@ -148,10 +143,10 @@ public class ChatActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         System.out.println("toolbar" + toolbar);
-        backButton = toolbar.findViewById(R.id.back_button);
+        ImageView backButton = toolbar.findViewById(R.id.back_button);
         layout_detail = toolbar.findViewById(R.id.layout_detail);
-        tvChatContactName = toolbar.findViewById(R.id.chatContactName);
-        chatDp = toolbar.findViewById(R.id.chatContactDp);
+        TextView tvChatContactName = toolbar.findViewById(R.id.chatContactName);
+        ImageView chatDp = toolbar.findViewById(R.id.chatContactDp);
         //tvChatContactsStatus = (TextView) toolbar.findViewById(R.id.chatContactStatus);
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -187,7 +182,7 @@ public class ChatActivity extends AppCompatActivity {
     private void initializeComponents() {
 
         etMessage = findViewById(R.id.messageEdit);
-        btnSend = findViewById(R.id.chatSendButton);
+        ImageButton btnSend = findViewById(R.id.chatSendButton);
         lvMessageContainer = findViewById(R.id.messagesContainer);
         RelativeLayout container = findViewById(R.id.container);
 
@@ -362,12 +357,8 @@ public class ChatActivity extends AppCompatActivity {
         return date;
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class SendMessage extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
 
         @Override
         protected Void doInBackground(Void... arg0) {
@@ -390,7 +381,7 @@ public class ChatActivity extends AppCompatActivity {
 
                     String receiver_id = c.getString("id");
                     String sent_time = c.getString("IST");
-                    splited_time = sent_time.split("\\s+");
+                    String[] splited_time = sent_time.split("\\s+");
                     System.out.println("time in send:::::" + splited_time[1]);
                     System.out.println("Response::::::::::::" + receiver_id);
 
@@ -426,6 +417,7 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class setHistory extends AsyncTask<Void, Void, Void> {
 
         @Override
@@ -561,17 +553,13 @@ public class ChatActivity extends AppCompatActivity {
 
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class ReceiveMessage extends AsyncTask<Void, Void, Void> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
 
         @Override
         protected Void doInBackground(Void... arg0) {
             HttpHandler sh = new HttpHandler();
-            urlReceive = Constant.MessgaeChatUrl + Constant.USER_ID + "&receiver_id=" + Constant.RECEIVER_ID + "&time=" + sent_date + "q" + sent_time + "&timezone=" + timezone_id;
+            String urlReceive = Constant.MessgaeChatUrl + Constant.USER_ID + "&receiver_id=" + Constant.RECEIVER_ID + "&time=" + sent_date + "q" + sent_time + "&timezone=" + timezone_id;
             //urlReceive = urlReceive.replaceAll(" ","%20");
             System.out.println("urlReceive::::" + urlReceive);
 
@@ -588,11 +576,7 @@ public class ChatActivity extends AppCompatActivity {
                     JSONArray data = jsonObj.getJSONArray("data");
                     System.out.println("jsonArray:::: in receive message" + data);
 
-                    if (error_code == 0) {
-                        notify = true;
-                    } else {
-                        notify = false;
-                    }
+                    notify = error_code == 0;
 
                     // looping through All Contacts
                     for (int i = 0; i < data.length(); i++) {

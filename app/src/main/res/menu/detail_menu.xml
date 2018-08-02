@@ -6,23 +6,23 @@
         android:icon="@drawable/comment"
         android:orderInCategory="100"
         android:title="Chat"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_message"
         android:icon="@drawable/email"
         android:orderInCategory="100"
         android:title="Message"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_testimonials"
         android:icon="@drawable/testimonials"
         android:orderInCategory="100"
         android:title="Testimonials"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_share"
         android:icon="@drawable/share"
         android:orderInCategory="100"
         android:title="Share"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 </menu>

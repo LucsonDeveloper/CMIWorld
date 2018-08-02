@@ -181,7 +181,9 @@ public class VideoPickerActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT < 19) {
             Intent intent = new Intent();
             intent.setType("video/mp4");
-            intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+            }
             intent.setAction(Intent.ACTION_GET_CONTENT);
             startActivityForResult(Intent.createChooser(intent, "Select videos"), SELECT_VIDEOS);
         } else {

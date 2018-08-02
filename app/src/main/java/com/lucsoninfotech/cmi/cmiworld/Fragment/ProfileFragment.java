@@ -42,7 +42,7 @@ import java.util.HashMap;
  */
 public class ProfileFragment extends Fragment {
 
-    CardView finalstep;
+    private CardView finalstep;
     private String url;
     private ProgressDialog pDialog;
     private ImageView profile_picture;

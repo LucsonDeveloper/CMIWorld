@@ -41,20 +41,23 @@ import java.util.Map;
 
 public class TestimonialsActivity extends AppCompatActivity {
 
-    public ProgressDialog pDialog;
-    RecyclerView rv_testimonial;
-    TextView user_name;
-    Button btn_post;
-    EditText edt_user_post;
-    ImageView user_dp;
-    List<HashMap<String, String>> List_userdata;
-    Project_detail_Adapter projectdetailAdapter;
-    String post_data, testimonial_url, post_url;
-    LinearLayout linear_postcomment;
-    HashMap<String, String> user_detail = new HashMap<>();
-    List<HashMap<String, String>> testimonials_list;
-    Bundle b;
-    String sem_id, project_id;
+    private ProgressDialog pDialog;
+    private RecyclerView rv_testimonial;
+    private TextView user_name;
+    private Button btn_post;
+    private EditText edt_user_post;
+    private ImageView user_dp;
+    private List<HashMap<String, String>> List_userdata;
+    private Project_detail_Adapter projectdetailAdapter;
+    private String post_data;
+    private String testimonial_url;
+    private String post_url;
+    private LinearLayout linear_postcomment;
+    private HashMap<String, String> user_detail = new HashMap<>();
+    private List<HashMap<String, String>> testimonials_list;
+    private Bundle b;
+    private String sem_id;
+    private String project_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,7 +128,7 @@ public class TestimonialsActivity extends AppCompatActivity {
         });
     }
 
-    public void PostComment() {
+    private void PostComment() {
         // Tag used to cancel the request
         final String tag_string_req = "req_login";
         pDialog.setMessage("Please Wait");
@@ -149,7 +152,7 @@ public class TestimonialsActivity extends AppCompatActivity {
 
 
                         post_data = edt_user_post.getText().toString().trim();
-                        HashMap<String, String> abc = new HashMap<String, String>();
+                        HashMap<String, String> abc = new HashMap<>();
 
 
                         abc.put("time", "just now");
@@ -199,7 +202,7 @@ public class TestimonialsActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
-                Map<String, String> params = new HashMap<String, String>();
+                Map<String, String> params = new HashMap<>();
                 params.put("sem_comment", edt_user_post.getText().toString().trim());
                 return params;
             }
@@ -211,7 +214,7 @@ public class TestimonialsActivity extends AppCompatActivity {
     }
 
 
-    public void getTestimonials() {
+    private void getTestimonials() {
         // Tag used to cancel the request
         final String tag_string_req = "req_login";
         pDialog.setMessage("Please Wait");

@@ -1,5 +1,6 @@
 package com.lucsoninfotech.cmi.cmiworld.Activity;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -38,9 +39,6 @@ import cz.msebera.android.httpclient.message.BasicNameValuePair;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    private Button registration;
-    private TextView btn_sign_in;
-
     private EditText fullname;
     private EditText email;
     private EditText mobile_no;
@@ -63,8 +61,8 @@ public class RegistrationActivity extends AppCompatActivity {
         mobile_no = findViewById(R.id.mobile_number);
         password = findViewById(R.id.password);
         confirm_password = findViewById(R.id.conform_passwoprd);
-        btn_sign_in = findViewById(R.id.btn_sign_in);
-        registration = findViewById(R.id.btn_register);
+        TextView btn_sign_in = findViewById(R.id.btn_sign_in);
+        Button registration = findViewById(R.id.btn_register);
 
         pDialog = new ProgressDialog(this);
         pDialog.setCancelable(false);
@@ -193,6 +191,7 @@ public class RegistrationActivity extends AppCompatActivity {
     private void sendPostRequest(String... strings) {
         pDialog.setMessage("Please Wait  ...");
         showDialog();
+        @SuppressLint("StaticFieldLeak")
         class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
             @Override
             protected String doInBackground(String... str) {

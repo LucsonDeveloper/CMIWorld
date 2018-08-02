@@ -16,11 +16,6 @@ import com.lucsoninfotech.cmi.cmiworld.other.Constant;
 
 public class SettingActivity extends AppCompatActivity {
 
-    private LinearLayout logout;
-    private LinearLayout change_profile;
-    private LinearLayout payment_detail;
-    private LinearLayout faq;
-    private LinearLayout rate_us;
     private SessionManager session;
     private SQLiteHandler db;
 
@@ -28,13 +23,13 @@ public class SettingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setting);
-        logout = findViewById(R.id.logout);
+        LinearLayout logout = findViewById(R.id.logout);
         db = new SQLiteHandler(getApplicationContext());
 
-        change_profile = findViewById(R.id.change_profile);
-        payment_detail = findViewById(R.id.payment_detail);
-        faq = findViewById(R.id.faq);
-        rate_us = findViewById(R.id.rate_us);
+        LinearLayout change_profile = findViewById(R.id.change_profile);
+        LinearLayout payment_detail = findViewById(R.id.payment_detail);
+        LinearLayout faq = findViewById(R.id.faq);
+        LinearLayout rate_us = findViewById(R.id.rate_us);
 
 
         session = new SessionManager(getApplicationContext());

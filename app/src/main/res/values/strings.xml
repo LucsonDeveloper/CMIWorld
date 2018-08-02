@@ -79,8 +79,5 @@
     <string name="change_password">CHANGE PASSWORD</string>
     <string name="confirm_new_password">CONFIRM NEW PASSWORD</string>
     <string name="old_password">Old Password</string>
-    <string name="select_your_option_for_rating_us">Select your Option For Rating Us ?</string>
-    <string name="using_play_store">Using Play Store</string>
-    <string name="using_cmi_world_application">Using CMI WORLD APPLICATION</string>
 
 </resources>

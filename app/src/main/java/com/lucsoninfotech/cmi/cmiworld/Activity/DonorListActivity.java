@@ -43,7 +43,6 @@ public class DonorListActivity extends AppCompatActivity {
     private List<HashMap<String, String>> category_list;
     private ProjectAdapter projectadapter;
     private Bundle b;
-    private HashMap<String, String> user_detail = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +55,7 @@ public class DonorListActivity extends AppCompatActivity {
         pDialog.setCancelable(false);
         b = getIntent().getExtras();
         SQLiteHandler db = new SQLiteHandler(this);
-        user_detail = db.getUserDetails();
+        HashMap<String, String> user_detail = db.getUserDetails();
         Log.e("UserID", "" + user_detail.get("id"));
         Constant.USER_ID = user_detail.get("id");
         Constant.USER_TYPE = user_detail.get("user_type");

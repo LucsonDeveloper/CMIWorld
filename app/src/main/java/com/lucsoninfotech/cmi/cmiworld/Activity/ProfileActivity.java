@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NavUtils;
 import android.support.v4.content.ContextCompat;
@@ -56,7 +57,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class ProfileActivity extends AppCompatActivity {
-    static final Integer READ_EXST = 1;
+    private static final Integer READ_EXST = 1;
     private final int PICK_IMAGE_REQUEST = 1;
     private ProgressDialog pDialog;
     private TextView txt_email;
@@ -75,7 +76,7 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        askForPermission(Manifest.permission.READ_EXTERNAL_STORAGE, READ_EXST);
+        askForPermission();
 
         progressBarHolder = findViewById(R.id.progressBarHolder);
         progressbar = findViewById(R.id.progressbar);
@@ -134,22 +135,22 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
-    private void askForPermission(String permission, Integer requestCode) {
-        if (ContextCompat.checkSelfPermission(ProfileActivity.this, permission) != PackageManager.PERMISSION_GRANTED) {
+    private void askForPermission() {
+        if (ContextCompat.checkSelfPermission(ProfileActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
             // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale(ProfileActivity.this, permission)) {
+            if (ActivityCompat.shouldShowRequestPermissionRationale(ProfileActivity.this, Manifest.permission.READ_EXTERNAL_STORAGE)) {
                 //This is called if user has denied the permission before
                 //In this case I am just asking the permission again
-                ActivityCompat.requestPermissions(ProfileActivity.this, new String[]{permission}, requestCode);
+                ActivityCompat.requestPermissions(ProfileActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, ProfileActivity.READ_EXST);
             } else {
-                ActivityCompat.requestPermissions(ProfileActivity.this, new String[]{permission}, requestCode);
+                ActivityCompat.requestPermissions(ProfileActivity.this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, ProfileActivity.READ_EXST);
             }
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (ActivityCompat.checkSelfPermission(this, permissions[0]) == PackageManager.PERMISSION_GRANTED) {
             Toast.makeText(this, "Permission granted", Toast.LENGTH_SHORT).show();

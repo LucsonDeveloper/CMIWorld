@@ -35,7 +35,7 @@ import java.util.Map;
 public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
 
-    SwipeRefreshLayout swipeRefreshLayout;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private HomeAdapter homeadapter;
     private ListView lv_home;
     private ProgressDialog pDialog;

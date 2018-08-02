@@ -20,12 +20,12 @@ public class SessionManager {
     // LogCat tag
     private static String TAG = SessionManager.class.getSimpleName();
     // Shared Preferences
-    SharedPreferences pref;
+    private SharedPreferences pref;
     SharedPreferences.Editor editor_wholedata;
-    SharedPreferences.Editor editor;
-    Context _context;
+    private SharedPreferences.Editor editor;
+    private final Context _context;
     // Shared pref mode
-    int PRIVATE_MODE = 0;
+    private final int PRIVATE_MODE = 0;
 
     public SessionManager(Context context) {
         this._context = context;

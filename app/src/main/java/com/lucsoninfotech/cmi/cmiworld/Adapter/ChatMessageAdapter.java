@@ -64,11 +64,7 @@ public class ChatMessageAdapter extends BaseAdapter {
     String videoHistory;
     String audioHistory;
     private ChatMessageModel chatMessage;
-    private ViewHolder holder;
-    private SimpleDateFormat simpleDateFormat;
-    private String date;
     private String urlUpload;
-    private Calendar calander;
     private ImageLoader imageLoader;
     private DisplayImageOptions displayOptions;
 
@@ -153,6 +149,7 @@ public class ChatMessageAdapter extends BaseAdapter {
 //        }
 
 
+        ViewHolder holder;
         if (v == null) {
             if (vi != null) {
                 v = vi.inflate(R.layout.list_item_chat_message, null);
@@ -1712,14 +1709,14 @@ public class ChatMessageAdapter extends BaseAdapter {
     }
 
     public String getDate() {
-        calander = Calendar.getInstance();
-        simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        date = simpleDateFormat.format(calander.getTime());
+        Calendar calander = Calendar.getInstance();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        String date = simpleDateFormat.format(calander.getTime());
         //System.out.println("Current date"+date);
         return date;
     }
 
-    public static class ViewHolder {
+    static class ViewHolder {
         TextView txtMessage;
         TextView txtInfo;
         LinearLayout content;
@@ -1752,6 +1749,7 @@ public class ChatMessageAdapter extends BaseAdapter {
         RelativeLayout layoutImage, layoutVideo, layoutAudio;
     }
 
+    @SuppressLint("StaticFieldLeak")
     private class DownloadAudio extends AsyncTask<Void, Void, Void> {
 
         final String urlDownload;

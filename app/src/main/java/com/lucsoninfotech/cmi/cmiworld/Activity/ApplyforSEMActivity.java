@@ -44,15 +44,18 @@ import java.util.Map;
 
 public class ApplyforSEMActivity extends AppCompatActivity {
 
-    ArrayList array_country;
-    String country_id;
-    EditText edt_ngo_name, edt_registration_id, edt_ngo_working_area, edt_location;
-    Button btn_next;
-    TextView txt_startting_date;
-    Spinner spipnner_country;
-    LinearLayout linear_date;
-    Calendar myCalendar;
-    List<HashMap<String, String>> category_list, country_list;
+    private ArrayList array_country;
+    private String country_id;
+    private EditText edt_ngo_name;
+    private EditText edt_registration_id;
+    private EditText edt_ngo_working_area;
+    private EditText edt_location;
+    private Button btn_next;
+    private TextView txt_startting_date;
+    private Spinner spipnner_country;
+    private LinearLayout linear_date;
+    private Calendar myCalendar;
+    private List<HashMap<String, String>> country_list;
     private ProgressDialog pDialog;
 
     @Override
@@ -71,7 +74,7 @@ public class ApplyforSEMActivity extends AppCompatActivity {
         pDialog = new ProgressDialog(ApplyforSEMActivity.this);
         pDialog.setCancelable(false);
         array_country = new ArrayList();
-        category_list = new ArrayList<>();
+        List<HashMap<String, String>> category_list = new ArrayList<>();
         country_list = new ArrayList<>();
 
 
@@ -245,12 +248,10 @@ public class ApplyforSEMActivity extends AppCompatActivity {
                     Toast.makeText(ApplyforSEMActivity.this, "Network Error Occured", Toast.LENGTH_SHORT).show();
                 } else if (error instanceof ServerError) {
                     Toast.makeText(ApplyforSEMActivity.this, "Server Error", Toast.LENGTH_SHORT).show();
-                } else if (error instanceof AuthFailureError) {
                 } else if (error instanceof ParseError) {
                     Toast.makeText(ApplyforSEMActivity.this, "Parsing Error Occured,Contact Developer", Toast.LENGTH_SHORT).show();
                 } else if (error instanceof NoConnectionError) {
                     Toast.makeText(ApplyforSEMActivity.this, "No Internet Connection", Toast.LENGTH_SHORT).show();
-                } else if (error instanceof TimeoutError) {
                 }
                 hideDialog();
             }
@@ -258,7 +259,7 @@ public class ApplyforSEMActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
-                return new HashMap<String, String>();
+                return new HashMap<>();
 
             }
 

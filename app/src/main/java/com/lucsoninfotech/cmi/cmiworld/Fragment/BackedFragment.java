@@ -46,8 +46,6 @@ public class BackedFragment extends Fragment {
     private ProgressDialog pDialog;
     private String projecturl;
     private List<HashMap<String, String>> project_list;
-    private HashMap<String, String> user_detail = new HashMap<>();
-    private SQLiteHandler db;
     private TextView nodata;
 
     public BackedFragment() {
@@ -65,8 +63,8 @@ public class BackedFragment extends Fragment {
         pDialog = new ProgressDialog(getActivity());
         pDialog.setCancelable(false);
         nodata = view.findViewById(R.id.nodata);
-        db = new SQLiteHandler(getActivity());
-        user_detail = db.getUserDetails();
+        SQLiteHandler db = new SQLiteHandler(getActivity());
+        HashMap<String, String> user_detail = db.getUserDetails();
         Log.e("UserID", "" + user_detail.get("id"));
         Constant.USER_ID = user_detail.get("id");
 
