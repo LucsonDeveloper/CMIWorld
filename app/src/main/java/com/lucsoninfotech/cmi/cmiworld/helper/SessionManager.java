@@ -3,8 +3,6 @@ package com.lucsoninfotech.cmi.cmiworld.helper;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v4.app.ActivityCompat;
-import android.util.Log;
 
 import com.lucsoninfotech.cmi.cmiworld.Activity.LoginActivity;
 

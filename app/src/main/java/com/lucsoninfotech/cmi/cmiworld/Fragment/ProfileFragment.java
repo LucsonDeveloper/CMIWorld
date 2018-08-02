@@ -42,11 +42,12 @@ import java.util.HashMap;
  */
 public class ProfileFragment extends Fragment {
 
+    CardView finalstep;
     private String url;
     private ProgressDialog pDialog;
     private ImageView profile_picture;
     private TextView username;
-CardView finalstep;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -58,7 +59,7 @@ CardView finalstep;
         LinearLayout btn_status = view.findViewById(R.id.btn_status);
         profile_picture = view.findViewById(R.id.profile_picture);
         username = view.findViewById(R.id.username);
-        finalstep=view.findViewById(R.id.finalstep);
+        finalstep = view.findViewById(R.id.finalstep);
         SQLiteHandler db = new SQLiteHandler(getActivity());
         HashMap<String, String> user_detail = db.getUserDetails();
         Log.e("UserID", "" + user_detail.get("id"));

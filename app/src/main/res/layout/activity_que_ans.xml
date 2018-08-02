@@ -11,8 +11,8 @@
         android:id="@+id/view_question"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/_5"
-        android:layout_below="@+id/btn_next" />
+        android:layout_below="@+id/btn_next"
+        android:padding="@dimen/_5" />
 
 
     <Button
@@ -20,18 +20,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:background="@color/colorAccent"
         android:padding="@dimen/_5"
         android:text="@string/next"
         android:textColor="#ffffff"
-        android:textStyle="bold"
-        android:layout_alignParentRight="true" />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btn_previous"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@color/colorAccent"
@@ -39,8 +40,7 @@
         android:text="@string/previous"
         android:textColor="#ffffff"
         android:textStyle="bold"
-        android:visibility="invisible"
-        android:layout_alignParentLeft="true" />
+        android:visibility="invisible" />
 
 
     <Button

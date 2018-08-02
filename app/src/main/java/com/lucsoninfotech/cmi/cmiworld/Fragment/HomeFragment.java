@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +32,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
+
+
 
     private HomeAdapter homeadapter;
     private ListView lv_home;
@@ -40,8 +43,8 @@ public class HomeFragment extends Fragment {
     private String user_role;
     private List<HashMap<String, String>> project_list;
     private SQLiteHandler db;
-
-
+    private int offSet = 1;
+    SwipeRefreshLayout swipeRefreshLayout;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -56,14 +59,30 @@ public class HomeFragment extends Fragment {
         Log.e("UserID", "" + user_detail.get("id"));
         Constant.USER_ID = user_detail.get("id");
 
-        projecturl = Constant.ProjectUrl + Constant.USER_ID + "&page=1";
+        projecturl = Constant.ProjectUrl + Constant.USER_ID + "&page=";
         lv_home = view.findViewById(R.id.lv_home);
-        if (Constant.isOnline(getActivity())) {
+        swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        swipeRefreshLayout.setRefreshing(true);
+                                        if (Constant.isOnline(getActivity())) {
+                                            GetProjectData();
+                                        } else {
+                                            Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                }
+        );
+
+
+      /*  if (Constant.isOnline(getActivity())) {
             GetProjectData();
         } else {
             Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_SHORT).show();
         }
-
+*/
         setHasOptionsMenu(true);
 
         return view;
@@ -72,15 +91,16 @@ public class HomeFragment extends Fragment {
     private void GetProjectData() {
         // Tag used to cancel the request
         String tag_string_req = "req_login";
-        pDialog.setMessage("Getting Projects ...");
-        showDialog();
-
-        StringRequest strReq = new StringRequest(Request.Method.POST, projecturl, new Response.Listener<String>() {
+        //  pDialog.setMessage("Getting Projects ...");
+        //   showDialog();
+        swipeRefreshLayout.setRefreshing(true);
+        String url = projecturl + offSet;
+        StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
                 Log.d("Responce", response);
-                hideDialog();
+                //  hideDialog();
 
                 try {
                     JSONObject jObj = new JSONObject(response);
@@ -120,19 +140,22 @@ public class HomeFragment extends Fragment {
                             map_project.put("country_name", country_name);
 
                             project_list.add(map_project);
-
+                            int value = Integer.parseInt(id);
+                            if (value >= offSet)
+                                offSet = value;
                         }
 
                         db.update_user_role(user_role, Constant.USER_ID);
 
                         homeadapter = new HomeAdapter(getActivity(), project_list);
                         lv_home.setAdapter(homeadapter);
+                        swipeRefreshLayout.setRefreshing(false);
                     } else {
 
                         String errorMsg4 = jObj.getString("error_string");
                         Toast.makeText(getActivity(),
                                 errorMsg4, Toast.LENGTH_LONG).show();
-
+                        swipeRefreshLayout.setRefreshing(false);
                     }
                 } catch (JSONException e) {
                     // JSON error
@@ -143,7 +166,8 @@ public class HomeFragment extends Fragment {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                hideDialog();
+                swipeRefreshLayout.setRefreshing(false);
+                //  hideDialog();
             }
         }) {
             @Override
@@ -167,5 +191,14 @@ public class HomeFragment extends Fragment {
     private void hideDialog() {
         if (pDialog.isShowing())
             pDialog.dismiss();
+    }
+
+    @Override
+    public void onRefresh() {
+        if (Constant.isOnline(getActivity())) {
+            GetProjectData();
+        } else {
+            Toast.makeText(getActivity(), "Please Check Your Network Connection", Toast.LENGTH_SHORT).show();
+        }
     }
 }

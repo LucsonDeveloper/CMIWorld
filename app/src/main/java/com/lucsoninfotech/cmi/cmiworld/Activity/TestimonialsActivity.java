@@ -85,9 +85,9 @@ public class TestimonialsActivity extends AppCompatActivity {
             Bundle b = getIntent().getExtras();
             linear_postcomment.setVisibility(View.VISIBLE);
             //http://18.220.189.209/admin/ws/testimonial-view.php?type=user&sem_id=3&user_id=100&page=1
-            testimonial_url = Constant.TestimonialsVIew_URL + Constant.USER_TYPE +"&sem_id=" + sem_id +"&user_id=" + Constant.USER_ID + "&page=1";
+            testimonial_url = Constant.TestimonialsVIew_URL + Constant.USER_TYPE + "&sem_id=" + sem_id + "&user_id=" + Constant.USER_ID + "&page=1";
         } else {
-            testimonial_url = Constant.TestimonialsVIew_URL + Constant.USER_TYPE + "&sem_id=" + sem_id +"&user_id=" + Constant.USER_ID + "&page=1";
+            testimonial_url = Constant.TestimonialsVIew_URL + Constant.USER_TYPE + "&sem_id=" + sem_id + "&user_id=" + Constant.USER_ID + "&page=1";
 
         }
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
