@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -45,7 +44,8 @@ public class SearchFragment extends Fragment {
     private String projecturl;
     private List<HashMap<String, String>> project_list;
     private TextView nodata;
-   @Override
+
+    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -60,7 +60,7 @@ public class SearchFragment extends Fragment {
         ImageView img_filter = view.findViewById(R.id.img_filter);
 
         project_list = new ArrayList<>();
-     SQLiteHandler db = new SQLiteHandler(getActivity());
+        SQLiteHandler db = new SQLiteHandler(getActivity());
         HashMap<String, String> user_detail = db.getUserDetails();
         Log.e("UserID", "" + user_detail.get("id"));
         Constant.USER_ID = user_detail.get("id");
@@ -95,7 +95,7 @@ public class SearchFragment extends Fragment {
                         GetProjectData();
 
                     } else {
-                        projecturl = Constant.SearchProjectUrl + Constant.USER_ID + "&page=1"+
+                        projecturl = Constant.SearchProjectUrl + Constant.USER_ID + "&page=1" +
                                 "&project_name=" + search + "&ngo_names_id=" + Constant.NGO_ID + "&countries_id=" + Constant.Country_ID +
                                 "&categories_id=" + Constant.Category_ID +
                                 "&tags_id=" + Constant.Tags_ID;

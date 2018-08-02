@@ -35,7 +35,7 @@ import java.util.Map;
 public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
 
-
+    SwipeRefreshLayout swipeRefreshLayout;
     private HomeAdapter homeadapter;
     private ListView lv_home;
     private ProgressDialog pDialog;
@@ -44,7 +44,7 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     private List<HashMap<String, String>> project_list;
     private SQLiteHandler db;
     private int offSet = 1;
-    SwipeRefreshLayout swipeRefreshLayout;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -62,6 +62,10 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         projecturl = Constant.ProjectUrl + Constant.USER_ID + "&page=";
         lv_home = view.findViewById(R.id.lv_home);
         swipeRefreshLayout = view.findViewById(R.id.swipe_refresh_layout);
+        swipeRefreshLayout.setColorSchemeResources(
+                R.color.colorPrimaryDark,
+                R.color.colorAccent,
+                R.color.colorPrimary);
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.post(new Runnable() {
                                     @Override
