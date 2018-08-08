@@ -45,12 +45,12 @@ public class Users extends AppCompatActivity {
 
         String url = "https://cmi-world-212205.firebaseio.com/users.json";
 
-        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>(){
+        StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
                 doOnSuccess(s);
             }
-        },new Response.ErrorListener(){
+        }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 System.out.println("" + volleyError);
@@ -69,17 +69,17 @@ public class Users extends AppCompatActivity {
         });
     }
 
-    public void doOnSuccess(String s){
+    public void doOnSuccess(String s) {
         try {
             JSONObject obj = new JSONObject(s);
 
             Iterator i = obj.keys();
             String key = "";
 
-            while(i.hasNext()){
+            while (i.hasNext()) {
                 key = i.next().toString();
 
-                if(!key.equals(UserDetails.username)) {
+                if (!key.equals(UserDetails.username)) {
                     al.add(key);
                 }
 
@@ -90,11 +90,10 @@ public class Users extends AppCompatActivity {
             e.printStackTrace();
         }
 
-        if(totalUsers <=1){
+        if (totalUsers <= 1) {
             noUsersText.setVisibility(View.VISIBLE);
             usersList.setVisibility(View.GONE);
-        }
-        else{
+        } else {
             noUsersText.setVisibility(View.GONE);
             usersList.setVisibility(View.VISIBLE);
             usersList.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, al));

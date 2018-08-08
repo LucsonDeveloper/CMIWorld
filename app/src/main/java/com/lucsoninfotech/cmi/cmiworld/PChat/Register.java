@@ -33,10 +33,10 @@ public class Register extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        username = (EditText)findViewById(R.id.username);
-        password = (EditText)findViewById(R.id.password);
-        registerButton = (Button)findViewById(R.id.registerButton);
-        login = (TextView)findViewById(R.id.login);
+        username = (EditText) findViewById(R.id.username);
+        password = (EditText) findViewById(R.id.password);
+        registerButton = (Button) findViewById(R.id.registerButton);
+        login = (TextView) findViewById(R.id.login);
 
         Firebase.setAndroidContext(this);
 
@@ -53,67 +53,61 @@ public class Register extends AppCompatActivity {
                 user = username.getText().toString();
                 pass = password.getText().toString();
 
-                if(user.equals("")){
+                if (user.equals("")) {
                     username.setError("can't be blank");
-                }
-                else if(pass.equals("")){
-                        password.setError("can't be blank");
-                    }
-                    else if(!user.matches("[A-Za-z0-9]+")){
-                            username.setError("only alphabet or number allowed");
+                } else if (pass.equals("")) {
+                    password.setError("can't be blank");
+                } else if (!user.matches("[A-Za-z0-9]+")) {
+                    username.setError("only alphabet or number allowed");
+                } else if (user.length() < 5) {
+                    username.setError("at least 5 characters long");
+                } else if (pass.length() < 5) {
+                    password.setError("at least 5 characters long");
+                } else {
+                    final ProgressDialog pd = new ProgressDialog(Register.this);
+                    pd.setMessage("Loading...");
+                    pd.show();
+
+                    String url = "https://cmi-world-212205.firebaseio.com/users.json";
+
+                    StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String s) {
+                            Firebase reference = new Firebase("https://cmi-world-212205.firebaseio.com/users");
+
+                            if (s.equals("null")) {
+                                reference.child(user).child("password").setValue(pass);
+                                Toast.makeText(Register.this, "registration successful", Toast.LENGTH_LONG).show();
+                            } else {
+                                try {
+                                    JSONObject obj = new JSONObject(s);
+
+                                    if (!obj.has(user)) {
+                                        reference.child(user).child("password").setValue(pass);
+                                        Toast.makeText(Register.this, "registration successful", Toast.LENGTH_LONG).show();
+                                    } else {
+                                        Toast.makeText(Register.this, "username already exists", Toast.LENGTH_LONG).show();
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            pd.dismiss();
                         }
-                        else if(user.length()<5){
-                                username.setError("at least 5 characters long");
-                            }
-                            else if(pass.length()<5){
-                                password.setError("at least 5 characters long");
-                            }
-                            else {
-                                final ProgressDialog pd = new ProgressDialog(Register.this);
-                                pd.setMessage("Loading...");
-                                pd.show();
 
-                                String url = "https://cmi-world-212205.firebaseio.com/users.json";
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError volleyError) {
+                            System.out.println("" + volleyError);
+                            pd.dismiss();
+                        }
+                    });
 
-                                StringRequest request = new StringRequest(Request.Method.GET, url, new Response.Listener<String>(){
-                                    @Override
-                                    public void onResponse(String s) {
-                                        Firebase reference = new Firebase("https://cmi-world-212205.firebaseio.com/users");
-
-                                        if(s.equals("null")) {
-                                            reference.child(user).child("password").setValue(pass);
-                                            Toast.makeText(Register.this, "registration successful", Toast.LENGTH_LONG).show();
-                                        }
-                                        else {
-                                            try {
-                                                JSONObject obj = new JSONObject(s);
-
-                                                if (!obj.has(user)) {
-                                                    reference.child(user).child("password").setValue(pass);
-                                                    Toast.makeText(Register.this, "registration successful", Toast.LENGTH_LONG).show();
-                                                } else {
-                                                    Toast.makeText(Register.this, "username already exists", Toast.LENGTH_LONG).show();
-                                                }
-
-                                            } catch (JSONException e) {
-                                                    e.printStackTrace();
-                                            }
-                                        }
-
-                                        pd.dismiss();
-                                    }
-
-                                },new Response.ErrorListener(){
-                                    @Override
-                                    public void onErrorResponse(VolleyError volleyError) {
-                                        System.out.println("" + volleyError );
-                                        pd.dismiss();
-                                    }
-                                });
-
-                                RequestQueue rQueue = Volley.newRequestQueue(Register.this);
-                                rQueue.add(request);
-                            }
+                    RequestQueue rQueue = Volley.newRequestQueue(Register.this);
+                    rQueue.add(request);
+                }
             }
         });
     }

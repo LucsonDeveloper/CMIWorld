@@ -36,13 +36,14 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
+    String USER_NAME, USER_EMAIL;
     private String TAG = LoginActivity.class.getSimpleName();
     private EditText inputName, inputEmail;
     private TextInputLayout inputLayoutName, inputLayoutEmail;
     private Button btnEnter;
     private SessionManager session;
     private SQLiteHandler db;
-String USER_NAME,USER_EMAIL;
+
     private static boolean isValidEmail(String email) {
         return !TextUtils.isEmpty(email) && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
@@ -73,20 +74,20 @@ String USER_NAME,USER_EMAIL;
         inputName = findViewById(R.id.input_name);
         inputEmail = findViewById(R.id.input_email);
         btnEnter = findViewById(R.id.btn_enter);
-inputName.setVisibility(View.GONE);
-inputEmail.setVisibility(View.GONE);
+        inputName.setVisibility(View.GONE);
+        inputEmail.setVisibility(View.GONE);
         inputName.addTextChangedListener(new MyTextWatcher(inputName));
         inputEmail.addTextChangedListener(new MyTextWatcher(inputEmail));
         Bundle bundle = getIntent().getExtras();
 
 //Extract the data…
-          USER_NAME = bundle.getString("USER_NAME");
-          USER_EMAIL = bundle.getString("USER_EMAIL");
+        USER_NAME = bundle.getString("USER_NAME");
+        USER_EMAIL = bundle.getString("USER_EMAIL");
 
         inputName.setText(USER_NAME);
         inputEmail.setText(USER_EMAIL);
         Log.e("USER_EMAIL", "" + USER_EMAIL);
-        Log.e("USER_NAME", "" +USER_NAME);
+        Log.e("USER_NAME", "" + USER_NAME);
         btnEnter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
