@@ -105,13 +105,13 @@ public class Chat extends AppCompatActivity {
             textView.setBackgroundResource(R.drawable.rounded_corner1);
             textView.setGravity(Gravity.RIGHT | Gravity.END);
             textView.setTypeface(null, Typeface.BOLD);
-            textView.setPadding(2, 0, 2, 0);
-            textView.setTextSize(16);
+            textView.setPadding(0, 5, 10, 5);
+            textView.setTextSize(15);
 
         } else {
             textView.setBackgroundResource(R.drawable.rounded_corner2);
-            textView.setTypeface(null, Typeface.BOLD);
-            textView.setPadding(2, 0, 2, 0);
+            textView.setTypeface(null, Typeface.BOLD_ITALIC);
+            textView.setPadding(10, 5, 0, 5);
             textView.setTextSize(16);
         }
 
