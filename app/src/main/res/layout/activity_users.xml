@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_text"
+    android:orientation="vertical"
+    android:padding="@dimen/_5">
+
+    <TextView
+        android:id="@+id/noUsersText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/no_users_found"
+        android:visibility="gone" />
+
+    <ListView
+        android:id="@+id/usersList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/colorAccent"
+        android:scrollbars="none"
+        android:dividerHeight="1dp" />
+</LinearLayout>

@@ -1,33 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.Toolbar android:id=""
-<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/toolbar_home"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:background="@color/colorPrimary" android:theme="@style/ThemeOverlay.AppCompat.Dark">
+<android.support.v7.widget.Toolbar android:id=""<android.support.v7.widget.Toolbar
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/toolbar_home"
+android:layout_width="match_parent" android:layout_height="wrap_content"
+android:background="@color/colorPrimary" android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView android:id="@+id/back_button" android:layout_width="20dp"
-        android:layout_height="20dp" android:clickable="true" android:focusable="true"
-        android:paddingRight="5dp" android:src="@drawable/home" />
+<ImageView android:id="@+id/back_button" android:layout_width="20dp" android:layout_height="20dp"
+    android:clickable="true" android:focusable="true" android:paddingRight="5dp"
+    android:src="@drawable/home" />
 
-    <com.lucsoninfotech.cmi.cmiworld.Helper.CircleImageView android:id="@+id/chatContactDp"
-        android:layout_width="50dp" android:layout_height="50dp"
-        android:layout_centerHorizontal="true" android:src="@drawable/home"
-        app:civ_border_color="#ffffff" app:civ_border_width="1dp" />
+<com.lucsoninfotech.cmi.cmiworld.Helper.CircleImageView android:id="@+id/chatContactDp"
+    android:layout_width="50dp" android:layout_height="50dp" android:layout_centerHorizontal="true"
+    android:src="@drawable/home" app:civ_border_color="#ffffff" app:civ_border_width="1dp" />
 
-    <LinearLayout android:id="@+id/layout_detail" android:layout_width="match_parent"
-        android:layout_height="match_parent" android:orientation="vertical"
-        android:paddingLeft="5dp">
+<LinearLayout android:id="@+id/layout_detail" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:orientation="vertical" android:paddingLeft="5dp">
 
-        <TextView android:id="@+id/chatContactName" android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:text="@string/full_name"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ffffff" />
+    <TextView android:id="@+id/chatContactName" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="@string/full_name"
+        android:textAppearance="?android:attr/textAppearanceMedium" android:textColor="#ffffff" />
 
-        <!--<TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Last seen 6:22pm"
-            android:id="@+id/chatContactStatus" />-->
+    <!--<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Last seen 6:22pm"
+        android:id="@+id/chatContactStatus" />-->
 
-    </LinearLayout>
+</LinearLayout>
 </android.support.v7.widget.Toolbar>

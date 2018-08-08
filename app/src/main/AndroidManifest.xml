@@ -18,6 +18,20 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
+
+    <!-- needed for older devices -
+   used to check app background / foreground status -->
+    <uses-permission android:name="android.permission.GET_TASKS" />
+
+    <!-- START Added for GCM -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <permission
+        android:name="com.lucsoninfotech.cmi.cmiworld.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.lucsoninfotech.cmi.cmiworld.permission.C2D_MESSAGE" />
+    <!-- END Added for GCM -->
+
     <uses-feature
         android:name="android.hardware.camera"
         android:required="false" />
@@ -28,13 +42,13 @@
     <application
         android:name=".other.AppController"
         android:allowBackup="true"
+        android:fullBackupContent="@xml/backup_descriptor"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:noHistory="true"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:fullBackupContent="@xml/backup_descriptor">
+        android:theme="@style/AppTheme">
 
         <!--
                   <meta-data
@@ -186,6 +200,60 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Activity.ProfileActivity" />
         </activity>
+
+        <!--CHAT APP -->
+        <activity
+            android:name=".Chatting.activity.Chat_Main_Activity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Chatting.activity.LoginActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Chatting.activity.ChatRoomActivity"
+            android:label="@string/app_name"
+            android:parentActivityName=".Chatting.activity.Chat_Main_Activity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activity.Chat_Main_Activity" />
+        </activity>
+
+        <!-- START Added for GCM -->
+        <receiver
+            android:name="com.google.android.gms.gcm.GcmReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.lucsoninfotech.cmi.cmiworld" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".Chatting.gcm.MyGcmPushReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
+
+        <service
+            android:name=".Chatting.gcm.GcmIntentService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.android.gms.iid.InstanceID" />
+            </intent-filter>
+        </service>
+
+        <!-- END Added for GCM -->
+
+        <activity android:name=".PChat.Login" />
+        <activity android:name=".PChat.Register" />
+        <activity android:name=".PChat.Users" />
+        <activity android:name=".PChat.Chat" />
     </application>
 
 </manifest>

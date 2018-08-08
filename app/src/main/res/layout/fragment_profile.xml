@@ -62,7 +62,6 @@
                 <LinearLayout
                     android:id="@+id/btn_messages"
                     android:layout_width="match_parent"
-
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/_5"
                     android:layout_marginBottom="@dimen/_5"
@@ -114,18 +113,17 @@
                     android:layout_margin="@dimen/_5"
                     android:layout_marginBottom="@dimen/_5"
                     android:background="@color/divider"
-                    android:orientation="horizontal"
-                    android:visibility="gone">
+                    android:orientation="horizontal">
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/_5"
                         android:layout_marginBottom="@dimen/_5"
-                        android:drawableLeft="@drawable/testimonials"
+                        android:drawableLeft="@drawable/ic_chat_black_24dp"
                         android:drawableRight="@drawable/next"
                         android:padding="@dimen/_5"
-                        android:text="@string/testimonials"
+                        android:text="@string/private_chat"
                         android:textColor="@color/black"
                         android:textSize="@dimen/activity_horizontal_margin"
                         android:textStyle="bold" />

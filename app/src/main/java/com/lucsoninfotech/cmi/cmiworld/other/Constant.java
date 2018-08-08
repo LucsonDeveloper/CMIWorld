@@ -22,23 +22,18 @@ public class Constant {
     public static final String PAYPAL_ENVIRONMENT = PayPalConfiguration.ENVIRONMENT_SANDBOX;
     public static final String PAYMENT_INTENT = PayPalPayment.PAYMENT_INTENT_SALE;
     public static final String DEFAULT_CURRENCY = "USD";
-    public static String USER_ID;
-    public static String USER_TYPE;
-    public static String USER_NAME;
-    public static String USER_IMAGE;
-    public static int USER_DEVELOPMENT;
-    public static int USER_EXPERIENCE;
-    public static Boolean Search_Fragment_Flag = false;
-    public static Boolean Payment_flag = false;
-    public static String Country_ID = "";
-    public static ArrayList selected_videos = new ArrayList<>();
-    public static String NGO_ID = "";
-    public static String Category_ID = "";
-    public static String Tags_ID = "";
-    public static String TIMEZONE;
-    public static String RECEIVER_ID;
-    public static String SEM_DP;
-    public static String SEM_NAME;
+    // global topic to receive app wide push notifications
+    public static final String TOPIC_GLOBAL = "global";
+    // broadcast receiver intent filters
+    public static final String SENT_TOKEN_TO_SERVER = "sentTokenToServer";
+    public static final String REGISTRATION_COMPLETE = "registrationComplete";
+    public static final String PUSH_NOTIFICATION = "pushNotification";
+    // type of push messages
+    public static final int PUSH_TYPE_CHATROOM = 1;
+    public static final int PUSH_TYPE_USER = 2;
+    // id to handle the notification in the notification try
+    public static final int NOTIFICATION_ID = 100;
+    public static final int NOTIFICATION_ID_BIG_IMAGE = 101;
     private static final String Root_Url = "http://18.220.189.209/admin/ws/";
     public static final String LOGIN_URL = Root_Url + "login.php?";
     public static final String SIGNUP_URL = Root_Url + "register.php";
@@ -71,6 +66,35 @@ public class Constant {
     public static final String Testimonials_URL = Root_Url + "testimonial-add.php?testimonial_id=0&sem_id=";
     public static final String TestimonialsVIew_URL = Root_Url + "testimonial-view.php?type=";
     public static final String SEMDonerList = Root_Url + "donor-list-project.php?project_id=";
+    private static final String BASE_URL = "https://lucsoninfotech.com/gcm-chat/v1";
+    public static final String LOGIN = BASE_URL + "/user/login";
+    public static final String USER = BASE_URL + "/user/_ID_";
+    public static final String CHAT_ROOMS = BASE_URL + "/chat_rooms";
+    public static final String CHAT_THREAD = BASE_URL + "/chat_rooms/_ID_";
+    public static final String CHAT_ROOM_MESSAGE = BASE_URL + "/chat_rooms/_ID_/message";
+    public static String USER_EMAIL;
+    public static String USER_ID;
+    public static String USER_TYPE;
+    public static String USER_NAME;
+
+    //chatting URL and Data
+    public static String USER_IMAGE;
+    public static int USER_DEVELOPMENT;
+    public static int USER_EXPERIENCE;
+    public static Boolean Search_Fragment_Flag = false;
+    public static Boolean Payment_flag = false;
+    public static String Country_ID = "";
+    public static ArrayList selected_videos = new ArrayList<>();
+    public static String NGO_ID = "";
+    public static String Category_ID = "";
+    public static String Tags_ID = "";
+    public static String TIMEZONE;
+    public static String RECEIVER_ID;
+    public static String SEM_DP;
+    public static String SEM_NAME;
+    // flag to identify whether to show single line
+    // or multi line test push notification tray
+    public static boolean appendNotificationMessages = true;
 
     public static boolean isOnline(Context applicationContext) {
 

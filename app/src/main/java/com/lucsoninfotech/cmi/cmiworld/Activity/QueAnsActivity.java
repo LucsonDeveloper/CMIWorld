@@ -31,6 +31,7 @@ import java.util.Map;
 
 public class QueAnsActivity extends AppCompatActivity implements QueAnsFragment.OnGetFromUserClickListener {
 
+    HashMap<String, String> user_detail = new HashMap<>();
     private ProgressDialog pDialog;
     private ViewPager viewpager;
     private QueAnsAdapter queAnsAdapter;
@@ -41,7 +42,6 @@ public class QueAnsActivity extends AppCompatActivity implements QueAnsFragment.
     private QueAnsFragment frag1;
     private ArrayList answer;
     private String[] ans;
-    HashMap<String, String> user_detail = new HashMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

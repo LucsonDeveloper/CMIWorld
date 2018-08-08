@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.lucsoninfotech.cmi.cmiworld.helper.SessionManager;
 
 
 /**
@@ -19,6 +20,7 @@ public class AppController extends Application {
     private static final String TAG = AppController.class.getSimpleName();
     private static AppController mInstance;
     private RequestQueue mRequestQueue;
+    private SessionManager pref;
 
     public static synchronized AppController getInstance() {
         return mInstance;
@@ -49,5 +51,12 @@ public class AppController extends Application {
         getRequestQueue().add(req);
     }
 
+    public SessionManager getPrefManager() {
+        if (pref == null) {
+            pref = new SessionManager(this);
+        }
+
+        return pref;
+    }
 
 }

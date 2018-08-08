@@ -50,6 +50,8 @@ import java.io.IOException;
 public class ApplyforSEMActivity2 extends AppCompatActivity {
 
     private static final Integer READ_EXST = 1;
+    private final int PICK_IMAGE_REQUEST = 1;
+    TextView txt_per;
     private LinearLayout linear_images;
     private LinearLayout linear_feature;
     private EditText edt_project_name;
@@ -60,7 +62,6 @@ public class ApplyforSEMActivity2 extends AppCompatActivity {
     private TextView txt_select_feature_image;
     private TextView txt_select_image;
     private TextView txt_select_video;
-    TextView txt_per;
     private Bitmap bitmap;
     private String filePath;
     private String addprojecturl;
@@ -70,7 +71,6 @@ public class ApplyforSEMActivity2 extends AppCompatActivity {
     private Bundle b;
     private CircleProgress circle_progress;
     private long totalSize = 0;
-    private final int PICK_IMAGE_REQUEST = 1;
     private ProgressDialog pDialog;
 
     @Override

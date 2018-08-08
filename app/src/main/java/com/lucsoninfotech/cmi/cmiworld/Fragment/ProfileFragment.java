@@ -20,12 +20,11 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.lucsoninfotech.cmi.cmiworld.Activity.ChatRoomActivity;
 import com.lucsoninfotech.cmi.cmiworld.Activity.ProfileActivity;
-import com.lucsoninfotech.cmi.cmiworld.Activity.ProjectListActivity;
 import com.lucsoninfotech.cmi.cmiworld.Activity.SettingActivity;
-import com.lucsoninfotech.cmi.cmiworld.Activity.TestimonialsActivity;
 import com.lucsoninfotech.cmi.cmiworld.Activity.UserStatusActivity;
+import com.lucsoninfotech.cmi.cmiworld.Chatting.activity.LoginActivity;
+import com.lucsoninfotech.cmi.cmiworld.PChat.Login;
 import com.lucsoninfotech.cmi.cmiworld.R;
 import com.lucsoninfotech.cmi.cmiworld.helper.SQLiteHandler;
 import com.lucsoninfotech.cmi.cmiworld.other.AppController;
@@ -65,8 +64,15 @@ public class ProfileFragment extends Fragment {
         Log.e("UserID", "" + user_detail.get("id"));
         Constant.USER_ID = user_detail.get("id");
         Constant.USER_TYPE = user_detail.get("user_type");
+        Constant.USER_NAME = user_detail.get("name");
+        Constant.USER_EMAIL = user_detail.get("email");
+
+
         //  System.out.println("user type from database::::::" + Constant.USER_TYPE);
         Log.e("USER_TYPE", "" + Constant.USER_TYPE);
+        Log.e("USER_EMAIL", "" + Constant.USER_EMAIL);
+        Log.e("USER_NAME", "" + Constant.USER_NAME);
+
         pDialog = new ProgressDialog(getActivity());
         pDialog.setCancelable(false);
         url = Constant.ViewProfileUrl + Constant.USER_ID;
@@ -91,13 +97,13 @@ public class ProfileFragment extends Fragment {
         btn_testimonials.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Constant.USER_TYPE.equals("2")) {
+              /*  if (Constant.USER_TYPE.equals("2")) {
                     Intent i = new Intent(getActivity(), ProjectListActivity.class);
                     startActivity(i);
-                } else {
-                    Intent i = new Intent(getActivity(), TestimonialsActivity.class);
-                    startActivity(i);
-                }
+                } else {*/
+                Intent i = new Intent(getActivity(), Login.class);
+                startActivity(i);
+                //}
             }
         });
 
@@ -125,7 +131,15 @@ public class ProfileFragment extends Fragment {
         btn_messages.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(getActivity(), ChatRoomActivity.class);
+                Intent i = new Intent(getActivity(), LoginActivity.class);
+                Bundle bundle = new Bundle();
+//Add your data from getFactualResults method to bundle
+                bundle.putString("USER_NAME", Constant.USER_NAME);
+                bundle.putString("USER_EMAIL", Constant.USER_EMAIL);
+//Add the bundle to the intent
+                i.putExtras(bundle);
+
+
                 startActivity(i);
             }
         });

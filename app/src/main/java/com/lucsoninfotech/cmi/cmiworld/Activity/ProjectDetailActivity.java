@@ -32,6 +32,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.lucsoninfotech.cmi.cmiworld.Adapter.Project_detail_Adapter;
+import com.lucsoninfotech.cmi.cmiworld.PChat.Login;
 import com.lucsoninfotech.cmi.cmiworld.R;
 import com.lucsoninfotech.cmi.cmiworld.other.AppController;
 import com.lucsoninfotech.cmi.cmiworld.other.Constant;
@@ -617,7 +618,9 @@ public class ProjectDetailActivity extends AppCompatActivity {
                 intent.putExtras(bundle);
                 startActivity(intent);
             case R.id.action_message:
-                MessageActions();
+                Intent i = new Intent(getApplicationContext(), Login.class);
+                startActivity(i);
+                //  MessageActions();
                 return true;
             case R.id.action_share:
                 Intent sharingIntent = new Intent(Intent.ACTION_SEND);
